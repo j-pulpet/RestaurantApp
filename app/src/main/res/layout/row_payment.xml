@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_2sdp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/llPaymentView"
+            >
+            <ImageView
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_margin="@dimen/_7sdp"
+                android:src="@drawable/ic_online"
+                android:id="@+id/ivPayment"
+                />
+            <TextView
+                android:id="@+id/tvPaymentName"
+                fontPath="@string/font_thin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_gravity="center"
+                android:text="tootl"
+                android:maxLines="1"
+                android:textAlignment="viewStart"
+                android:gravity="start"
+                android:ellipsize="end"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp"
+                tools:ignore="MissingPrefix" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

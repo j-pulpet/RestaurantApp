@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/rlToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_180sdp">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/trans_black" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/_5sdp"
+            app:tabBackground="@drawable/tab_selector"
+            app:tabGravity="center"
+            app:tabIndicatorHeight="0dp"
+            app:tabPaddingEnd="10dp"
+            app:tabPaddingStart="10dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="@dimen/_38sdp"
+                android:layout_height="@dimen/_38sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/bg_orangecornertrans_10"
+                android:backgroundTint="@color/black"
+                android:onClick="onClick"
+                android:padding="@dimen/_5sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_back"
+                app:tint="@color/white" />
+
+            <RelativeLayout
+                android:layout_width="@dimen/_38sdp"
+                android:layout_height="@dimen/_38sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginEnd="@dimen/_6sdp"
+                android:background="@drawable/bg_orangecornertrans_10"
+                android:backgroundTint="@color/black">
+
+                <ImageView
+                    android:id="@+id/ivCart"
+                    android:layout_width="@dimen/_38sdp"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/_8sdp"
+                    android:src="@drawable/ic_cart"
+                    app:tint="@color/white" />
+
+                <RelativeLayout
+                    android:id="@+id/rlCount"
+                    android:layout_width="@dimen/_16sdp"
+                    android:layout_height="@dimen/_16sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/_1sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:background="@drawable/bg_round_white"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tvCount"
+                        fontPath="@string/font_medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_10ssp"
+                        tools:ignore="MissingPrefix" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <!-- <ImageView
+                 android:id="@+id/ivCart"
+                 android:layout_width="40dp"
+                 android:layout_height="40dp"
+                 android:layout_alignParentRight="true"
+                 android:layout_marginTop="@dimen/_6sdp"
+                 android:layout_marginRight="@dimen/_6sdp"
+                 android:background="@drawable/bg_orangecornertrans_10"
+                 android:onClick="onClick"
+                 android:padding="@dimen/_5sdp"
+                 android:src="@drawable/ic_cart"
+                 android:tint="@color/white"
+                 tools:ignore="MissingConstraints" />-->
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/rlAddtoCart"
+        android:layout_below="@id/rlToolBar">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvFoodName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                app:cardCornerRadius="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp">
+
+                        <TextView
+                            android:id="@+id/tvFoodName"
+                            fontPath="@string/font_thin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12ssp"
+                            tools:ignore="MissingPrefix"
+                            tools:text="Test Meals" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_5sdp">
+
+                        <TextView
+                            android:id="@+id/tvFoodType"
+                            fontPath="@string/font_medium"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_toStartOf="@id/tvFoodPrice"
+                            android:gravity="start"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/_10ssp"
+                            tools:ignore="MissingPrefix"
+                            tools:text="Test Meals" />
+
+                        <TextView
+                            android:id="@+id/tvFoodPrice"
+                            fontPath="@string/font_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="end"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/_12ssp"
+                            tools:ignore="MissingPrefix"
+                            tools:text="$ 100" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/tvTime"
+                        fontPath="@string/font_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10ssp"
+                        tools:ignore="MissingPrefix"
+                        tools:text="60 - 100 Min" />
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvFoodDetail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/cvFoodName"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                app:cardCornerRadius="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_5sdp">
+
+                    <TextView
+                        fontPath="@string/font_bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="@string/detail"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp"
+                        tools:ignore="MissingPrefix" />
+
+                    <TextView
+                        android:id="@+id/tvDetail"
+                        fontPath="@string/font_medium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:alpha="0.7"
+                        android:gravity="start"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10ssp"
+                        tools:ignore="MissingPrefix"
+                        tools:text="60 - 100 Min" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RelativeLayout
+                            android:id="@+id/rlTitleAddons"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                fontPath="@string/font_thin"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginEnd="@dimen/_7sdp"
+                                android:layout_toStartOf="@id/ivAddAdons"
+                                android:gravity="start"
+                                android:text="@string/add_ons"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_12ssp"
+                                tools:ignore="MissingPrefix" />
+
+                            <ImageView
+                                android:id="@+id/ivAddAdons"
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
+                                android:layout_alignParentEnd="true"
+                                android:padding="@dimen/_4sdp"
+                                android:src="@drawable/ic_add_sevice"
+                                app:tint="@color/light_orange" />
+                        </RelativeLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvAddons"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/rlTitleAddons"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/tvNoDataAddonsFound"
+                            fontPath="@string/font_thin"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_50sdp"
+                            android:layout_below="@id/rlTitleAddons"
+                            android:gravity="center"
+                            android:text="@string/no_data_found"
+                            android:visibility="visible"
+                            tools:ignore="MissingPrefix" />
+                    </RelativeLayout>
+
+                    <TextView
+                        fontPath="@string/font_thin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:gravity="start"
+                        android:text="@string/notes"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp"
+                        tools:ignore="MissingPrefix" />
+
+                    <LinearLayout
+                        android:id="@+id/llDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_70sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/bg_editfield"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/edNotes"
+                            fontPath="@string/font_regular"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="@dimen/_2sdp"
+                            android:background="@android:color/transparent"
+                            android:ellipsize="end"
+                            android:gravity="start"
+                            android:hint="@string/hint_write_notes"
+                            android:paddingStart="@dimen/_5sdp"
+                            android:paddingTop="@dimen/_5sdp"
+                            android:paddingEnd="1dp"
+                            android:textAlignment="viewStart"
+                            android:textSize="@dimen/_10ssp"
+                            tools:ignore="MissingPrefix" />
+                    </LinearLayout>
+
+                    <TextView
+                        fontPath="@string/font_bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:gravity="start"
+                        android:text="@string/ingredients"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp"
+                        tools:ignore="MissingPrefix" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvIngredients"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/tvNoDataFound"
+                            fontPath="@string/font_medium"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_50sdp"
+                            android:gravity="center"
+                            android:text="@string/no_data_found"
+                            android:visibility="gone"
+                            tools:ignore="MissingPrefix" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+    <RelativeLayout
+        android:id="@+id/rlAddtoCart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/_10sdp">
+
+        <RelativeLayout
+            android:id="@+id/rlItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FF3B30"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tvNoItemFound"
+                fontPath="@string/font_medium"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:gravity="center"
+                android:text="@string/item_currently_unavailable"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15ssp"
+                tools:ignore="MissingPrefix" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlQty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp">
+
+            <ImageView
+                android:id="@+id/ivMinus"
+                fontPath="@string/font_medium"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/ic_minus"
+                android:textSize="@dimen/_12ssp"
+                app:tint="@color/light_orange"
+                tools:ignore="MissingPrefix" />
+
+            <TextView
+                android:id="@+id/tvFoodQty"
+                fontPath="@string/font_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_toEndOf="@id/ivMinus"
+                android:text="1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp"
+                tools:ignore="MissingPrefix" />
+
+            <ImageView
+                android:id="@+id/ivPlus"
+                fontPath="@string/font_medium"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_toEndOf="@id/tvFoodQty"
+                android:src="@drawable/ic_plus"
+                android:textSize="@dimen/_12ssp"
+                app:tint="@color/light_orange"
+                tools:ignore="MissingPrefix" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tvAddtoCart"
+            fontPath="@string/font_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_toEndOf="@id/rlQty"
+            android:background="@drawable/bg_editfield"
+            android:backgroundTint="@color/light_orange"
+            android:gravity="center_horizontal"
+            android:onClick="onClick"
+            android:padding="@dimen/_10sdp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12ssp"
+            tools:ignore="MissingPrefix"
+            tools:text="Add To Cart $ 0.0" />
+    </RelativeLayout>
+
+</RelativeLayout>

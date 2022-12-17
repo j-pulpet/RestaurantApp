@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_28sdp"
+        android:backgroundTint="@color/gray_orange"
+        android:background="@drawable/bg_top_shap_5"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/_22sdp"
+            android:layout_height="@dimen/_22sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="@dimen/_10sdp"
+            android:padding="@dimen/_6sdp"
+            android:id="@+id/ivCancel"
+            android:src="@drawable/ic_cross"
+            android:background="@drawable/bg_strock_black"
+            />
+
+         <androidx.recyclerview.widget.RecyclerView
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:id="@+id/rvPromoCode"
+             />
+        <TextView
+            android:id="@+id/tvNoDataFound"
+            fontPath="@string/font_bold"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/no_data_found"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/_12ssp"
+            android:visibility="gone"
+            tools:ignore="MissingPrefix" />
+    </LinearLayout>
+</LinearLayout>

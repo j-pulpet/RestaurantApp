@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:orientation="horizontal">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/ivFoodCart"
+                fontPath="@string/font_medium"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/temp_barger"
+                android:textSize="@dimen/_12ssp"
+                app:riv_corner_radius="5dp"
+                tools:ignore="MissingPrefix" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvFoodName"
+                        fontPath="@string/font_medium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start|center_vertical"
+                        android:textAlignment="viewStart"
+                        android:layout_toStartOf="@id/ivDeleteCartItem"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp"
+                        tools:ignore="MissingPrefix"
+                        tools:text="Sandwich" />
+
+                    <ImageView
+                        android:id="@+id/ivDeleteCartItem"
+                        fontPath="@string/font_medium"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="start"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:padding="@dimen/_3sdp"
+                        android:src="@drawable/ic_delete"
+                        app:tint="@color/light_orange"
+                        tools:ignore="MissingPrefix" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvNotes"
+                        fontPath="@string/font_medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:background="@drawable/bg_orangecorner_10"
+                        android:padding="@dimen/_3sdp"
+                        android:text="@string/notes"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_10ssp"
+                        tools:ignore="MissingPrefix" />
+
+                    <TextView
+                        android:id="@+id/tvAddons"
+                        fontPath="@string/font_medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:background="@drawable/bg_orangecorner_10"
+                        android:padding="@dimen/_3sdp"
+                        android:text="@string/addons"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_10ssp"
+                        tools:ignore="MissingPrefix" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_10sdp">
+
+                    <ImageView
+                        android:id="@+id/ivMinus"
+                        fontPath="@string/font_medium"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:src="@drawable/ic_minus"
+                        android:textSize="@dimen/_12ssp"
+                        app:tint="@color/light_orange"
+                        tools:ignore="MissingPrefix" />
+
+                    <TextView
+                        android:id="@+id/tvFoodQty"
+                        fontPath="@string/font_medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_toEndOf="@id/ivMinus"
+                        android:text="1"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10ssp"
+                        tools:ignore="MissingPrefix" />
+
+                    <ImageView
+                        android:id="@+id/ivPlus"
+                        fontPath="@string/font_medium"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_toEndOf="@id/tvFoodQty"
+                        android:src="@drawable/ic_plus"
+                        android:textSize="@dimen/_12ssp"
+                        app:tint="@color/light_orange"
+                        tools:ignore="MissingPrefix" />
+
+                    <TextView
+                        android:id="@+id/tvFoodPrice"
+                        fontPath="@string/font_thin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginHorizontal="@dimen/_8sdp"
+                        android:text="$ 15"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp"
+                        tools:ignore="MissingPrefix" />
+                </RelativeLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

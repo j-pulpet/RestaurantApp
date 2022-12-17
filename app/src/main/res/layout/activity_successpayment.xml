@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+   <ImageView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:src="@drawable/ic_ordersucessfull"
+       android:layout_above="@id/llbottom"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/llbottom"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/order_success"
+            android:gravity="center"
+            fontPath="@string/font_bold"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:textSize="@dimen/_16ssp"
+            android:textColor="@color/black"
+            tools:ignore="MissingPrefix" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:text="@string/your_order_has_been_successfully_placed_n_amp_will_be_process_by_system"
+            android:gravity="center"
+            fontPath="@string/font_medium"
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/black"
+            tools:ignore="MissingPrefix" />
+        <TextView
+            fontPath="@string/font_thin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/continue_shooping"
+            android:id="@+id/tvProceed"
+            android:background="@color/colorPrimary"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            tools:ignore="MissingPrefix" />
+    </LinearLayout>
+</RelativeLayout>

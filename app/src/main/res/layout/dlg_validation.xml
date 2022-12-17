@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:ignore="MissingPrefix">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_30sdp"
+        android:background="@drawable/bg_corner_white_10"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/_10sdp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center_horizontal">
+            <TextView
+                fontPath="@string/font_mark_web_thin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/app_name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_18sdp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/_7sdp">
+
+            <TextView
+                android:id="@+id/tvMessage"
+                fontPath="@string/font_regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/logout"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/logout_button"
+            android:text="@string/o_k"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:id="@+id/tvOk"
+            android:textColor="@color/white"
+            tools:ignore="RtlCompat" />
+
+    </LinearLayout>
+
+</LinearLayout>

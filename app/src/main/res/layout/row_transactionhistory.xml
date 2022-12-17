@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5sdp"
+    android:background="@drawable/bg_white_10">
+
+    <ImageView
+        android:id="@+id/ivTrading"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:src="@drawable/ic_trred" />
+
+    <RelativeLayout
+        android:id="@+id/rlQtyNo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_toEndOf="@id/ivTrading">
+
+        <TextView
+            android:id="@+id/tvOrderNumber"
+            fontPath="@string/font_thin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10ssp"
+            tools:ignore="MissingPrefix"
+            tools:text="S7KQ0F92LO" />
+
+        <TextView
+            android:id="@+id/tvOrderDate"
+            fontPath="@string/font_thin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/_10ssp"
+            tools:ignore="MissingPrefix"
+            tools:text="17/07/2020" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rlQtyNo"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_toEndOf="@id/ivTrading">
+
+        <TextView
+            android:id="@+id/tvOrderStatus"
+            fontPath="@string/font_thin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10ssp"
+            tools:ignore="MissingPrefix"
+            tools:text="S7KQ0F92LO" />
+
+        <TextView
+            android:id="@+id/tvOrderPrice"
+            fontPath="@string/font_thin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14ssp"
+            tools:ignore="MissingPrefix"
+            tools:text="10" />
+
+    </RelativeLayout>
+</RelativeLayout>

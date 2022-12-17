@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rlTitle"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:onClick="onClick"
+            android:layout_marginStart="@dimen/_minus4sdp"
+            android:padding="@dimen/_5sdp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_back"
+            />
+
+        <TextView
+            fontPath="@string/font_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:id="@+id/tvCategoryName"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14ssp"
+            tools:ignore="MissingPrefix" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@id/rlTitle"
+        >
+        <TextView
+            android:id="@+id/tvNoDataFound"
+            fontPath="@string/font_bold"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/no_data_found"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/_12ssp"
+            android:visibility="gone"
+            tools:ignore="MissingPrefix" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            tools:listitem="@layout/row_foodsubcategory"
+            android:id="@+id/rvFoodData"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>

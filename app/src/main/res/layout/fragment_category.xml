@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_orange">
+
+    <RelativeLayout
+        android:id="@+id/rlToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize">
+
+        <ImageView
+            android:id="@+id/ivMenu"
+            android:layout_width="@dimen/_38sdp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_7sdp"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/ic_nevigation"
+            />
+
+        <TextView
+            fontPath="@string/font_thin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/categories"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14ssp"
+            tools:ignore="MissingPrefix" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rlToolBar"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvNoDataFound"
+            fontPath="@string/font_thin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/no_data_found"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/_12ssp"
+            android:visibility="gone"
+            tools:ignore="MissingPrefix" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFoodCategory"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            tools:listitem="@layout/row_foodoutcategory" />
+    </LinearLayout>
+
+
+</RelativeLayout>

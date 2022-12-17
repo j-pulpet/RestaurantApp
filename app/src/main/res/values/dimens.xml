@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="pv_pin_view_item_size">48dp</dimen>
+    <dimen name="pv_pin_view_item_radius">5dp</dimen>
+    <dimen name="pv_pin_view_item_spacing">5dp</dimen>
+    <dimen name="pv_pin_view_item_line_width">2dp</dimen>
+    <dimen name="pv_pin_view_cursor_width">2dp</dimen>
+
+    <dimen name="ef_item_padding">1dp</dimen>
+    <dimen name="ef_padding_small">5dp</dimen>
+    <dimen name="ef_spacing_half">4dp</dimen>
+    <dimen name="ef_spacing_double">16dp</dimen>
+    <dimen name="ef_font_small">12sp</dimen>
+    <dimen name="ef_font_medium">16sp</dimen>
+    <dimen name="ef_height_snackbar">80dp</dimen>
+</resources>

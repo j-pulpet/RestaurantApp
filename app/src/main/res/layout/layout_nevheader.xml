@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_160sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/ivProfile"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_appicon"
+                    app:riv_oval="true" />
+
+                <TextView
+                    android:id="@+id/tv_NevProfileName"
+                    fontPath="@string/font_thin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14ssp"
+                    tools:ignore="MissingPrefix"
+                    tools:text="Food Apps" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/llNevVideoClassification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray" />
+
+        <RelativeLayout
+            android:id="@+id/rl_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/_7sdp"
+            android:paddingBottom="@dimen/_7sdp">
+
+            <ImageView
+                android:id="@+id/ic_home"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:src="@drawable/ic_home"
+                app:tint="@color/colorPrimary" />
+
+            <TextView
+                fontPath="@string/font_thin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/ic_home"
+                android:gravity="center"
+                android:text="@string/home"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11ssp"
+                tools:ignore="RtlHardcoded,MissingPrefix" />
+
+            <ImageView
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:padding="@dimen/_6sdp"
+                android:id="@+id/ivBackHome"
+                android:src="@drawable/ic_next" />
+        </RelativeLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray" />
+
+        <RelativeLayout
+            android:id="@+id/rl_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/_7sdp"
+            android:paddingBottom="@dimen/_7sdp">
+
+            <ImageView
+                android:id="@+id/ic_myBarabr"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:rotation="360"
+                android:src="@drawable/ic_category"
+                app:tint="@color/colorPrimary" />
+
+            <TextView
+                fontPath="@string/font_thin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/ic_myBarabr"
+                android:text="@string/categories"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11ssp"
+                tools:ignore="RtlHardcoded,MissingPrefix" />
+
+            <ImageView
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:padding="@dimen/_6sdp"
+                android:id="@+id/ivBackCategory"
+                android:src="@drawable/ic_next" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray" />
+
+        <RelativeLayout
+            android:id="@+id/rl_orderhistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/_7sdp"
+            android:paddingBottom="@dimen/_7sdp">
+
+            <ImageView
+                android:id="@+id/ic_orderhistory"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:rotation="360"
+                android:src="@drawable/ic_orderhistory"
+                app:tint="@color/colorPrimary" />
+
+            <TextView
+                fontPath="@string/font_thin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/ic_orderhistory"
+                android:text="@string/my_orders"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11ssp"
+                tools:ignore="RtlHardcoded,MissingPrefix" />
+
+            <ImageView
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:padding="@dimen/_6sdp"
+                android:id="@+id/ivBackOrder"
+                android:src="@drawable/ic_next" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray" />
+
+        <RelativeLayout
+            android:id="@+id/rl_favourite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/_7sdp"
+            android:paddingBottom="@dimen/_7sdp">
+
+            <ImageView
+                android:id="@+id/ic_favourite"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:rotation="360"
+                android:src="@drawable/ic_unlike"
+                app:tint="@color/colorPrimary" />
+
+            <TextView
+                fontPath="@string/font_thin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/ic_favourite"
+                android:text="@string/favourite_list"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11ssp"
+                tools:ignore="RtlHardcoded,MissingPrefix" />
+
+            <ImageView
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:padding="@dimen/_6sdp"
+                android:id="@+id/ivBackFavouriteList"
+                android:src="@drawable/ic_next" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray" />
+
+        <RelativeLayout
+            android:id="@+id/rl_ratting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/_7sdp"
+            android:paddingBottom="@dimen/_7sdp">
+
+            <ImageView
+                android:id="@+id/ic_mybooking"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:src="@drawable/ic_ratting"
+                app:tint="@color/colorPrimary" />
+
+            <TextView
+                fontPath="@string/font_thin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/ic_mybooking"
+                android:text="@string/ratting_amp_review"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11ssp"
+                tools:ignore="MissingPrefix" />
+
+            <ImageView
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:padding="@dimen/_6sdp"
+                android:id="@+id/ivBackRattingAndReview"
+                android:src="@drawable/ic_next" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray" />
+
+        <RelativeLayout
+            android:id="@+id/rl_wallet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/_7sdp"
+            android:paddingBottom="@dimen/_7sdp">
+
+            <ImageView
+                android:id="@+id/ic_wallet"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:rotation="360"
+                android:src="@drawable/ic_wallet"
+                app:tint="@color/colorPrimary" />
+
+            <TextView
+                fontPath="@string/font_thin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/ic_wallet"
+                android:text="@string/my_wallet_menu"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11ssp"
+                tools:ignore="RtlHardcoded,MissingPrefix" />
+
+            <ImageView
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:padding="@dimen/_6sdp"
+                android:id="@+id/ivBackWallet"
+                android:src="@drawable/ic_next" />
+        </RelativeLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray" />
+
+        <RelativeLayout
+            android:id="@+id/rl_setting"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="onClick"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/_7sdp"
+            android:paddingBottom="@dimen/_7sdp">
+
+            <ImageView
+                android:id="@+id/ic_setting"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:src="@drawable/ic_settings"
+                app:tint="@color/colorPrimary" />
+
+            <TextView
+                fontPath="@string/font_thin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/ic_setting"
+                android:text="@string/setting"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11ssp"
+                tools:ignore="RtlHardcoded,MissingPrefix" />
+
+            <ImageView
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:padding="@dimen/_6sdp"
+                android:id="@+id/ivBackSetting"
+                android:src="@drawable/ic_next" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray" />
+
+        <RelativeLayout
+            android:id="@+id/rl_Logout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="onClick"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/_7sdp"
+            android:paddingBottom="@dimen/_7sdp">
+
+            <ImageView
+                android:id="@+id/ic_Logout"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:src="@drawable/ic_logout"
+                app:tint="@color/colorPrimary" />
+
+            <TextView
+                fontPath="@string/font_thin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/ic_Logout"
+                android:text="@string/log_out"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11ssp"
+                tools:ignore="MissingPrefix" />
+
+            <ImageView
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:padding="@dimen/_6sdp"
+                android:id="@+id/ivBackLogout"
+                android:src="@drawable/ic_next" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray" />
+    </LinearLayout>
+
+
+</LinearLayout>

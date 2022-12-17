@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:background="@color/gray_orange"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:openDrawer="start">
+
+    <include
+        layout="@layout/app_bar_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+       android:id="@+id/nav_view"
+       android:layout_width="250dp"
+       android:layout_height="match_parent"
+       android:layout_gravity="start"
+       android:clickable="true"
+       android:focusable="true"
+       android:orientation="vertical"
+       android:weightSum="1"
+       android:background="@color/white"
+       android:fitsSystemWindows="true">
+       <include layout="@layout/layout_nevheader"/>
+    </LinearLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

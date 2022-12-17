@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3F2F7">
+
+    <RelativeLayout
+        android:id="@+id/rlToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize">
+
+        <ImageView
+            android:id="@+id/ivMenu"
+            android:layout_width="@dimen/_38sdp"
+            android:layout_height="match_parent"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/ic_nevigation" />
+
+        <TextView
+            fontPath="@string/font_thin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_toStartOf="@id/llEndViwe"
+            android:layout_toEndOf="@id/ivMenu"
+            android:text="@string/menu_name"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13ssp"
+            tools:ignore="MissingPrefix" />
+
+        <LinearLayout
+            android:id="@+id/llEndViwe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivLocation"
+                android:layout_width="@dimen/_38sdp"
+                android:layout_height="@dimen/_38sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="@drawable/bg_roundwhite5"
+                android:padding="@dimen/_8sdp"
+                android:src="@drawable/ic_location"
+                app:tint="@color/light_orange" />
+
+            <ImageView
+                android:id="@+id/ivSearch"
+                android:layout_width="@dimen/_38sdp"
+                android:layout_height="@dimen/_38sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="@drawable/bg_roundwhite5"
+                android:padding="@dimen/_8sdp"
+                android:src="@drawable/ic_search"
+                app:tint="@color/light_orange" />
+
+            <RelativeLayout
+                android:layout_width="@dimen/_38sdp"
+                android:layout_height="@dimen/_38sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="@drawable/bg_roundwhite5">
+
+                <ImageView
+                    android:id="@+id/ivCart"
+                    android:layout_width="@dimen/_38sdp"
+                    android:layout_height="@dimen/_38sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:padding="@dimen/_8sdp"
+                    android:src="@drawable/ic_cart"
+                    app:tint="@color/light_orange" />
+
+                <RelativeLayout
+                    android:id="@+id/rlCount"
+                    android:layout_width="@dimen/_14sdp"
+                    android:layout_height="@dimen/_14sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:layout_marginEnd="@dimen/_6sdp"
+                    android:background="@drawable/bg_round_white"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tvCount"
+                        fontPath="@string/font_medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_8ssp"
+                        tools:ignore="MissingPrefix" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlBenner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rlToolBar">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvBanner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlGrid"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_below="@+id/rlBenner">
+
+        <ImageView
+            android:id="@+id/ic_grid"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="@drawable/bg_white_100"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/ic_listitem"
+            app:tint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/tv_NevProfileName"
+            fontPath="@string/font_thin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:gravity="start"
+            android:text="@string/categories"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp"
+            tools:ignore="MissingPrefix" />
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFoodCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rlGrid" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swiperefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rvFoodCategory">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvFoodSubcategory"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/_5sdp" />
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+</RelativeLayout>

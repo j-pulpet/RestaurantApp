@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <View
+        android:layout_width="@dimen/_2sdp"
+        android:layout_height="match_parent"
+        android:id="@+id/ViewFrist"
+        android:layout_marginBottom="@dimen/_5sdp"/>
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        app:cardCornerRadius="7dp"
+        app:cardElevation="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/bg_strock_orange5"
+            android:id="@+id/llBarger"
+            >
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/ivFoodCategory"
+                fontPath="@string/font_medium"
+                android:layout_width="@dimen/_28sdp"
+                android:layout_height="@dimen/_28sdp"
+                android:textSize="@dimen/_12ssp"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="centerCrop"
+                app:riv_corner_radius="5dp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:src="@drawable/temp_barger"
+                tools:ignore="MissingPrefix" />
+
+            <TextView
+                android:id="@+id/tvFoodCategoryName"
+                fontPath="@string/font_thin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/barger"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp"
+                tools:ignore="MissingPrefix" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <View
+        android:layout_width="@dimen/_10sdp"
+        android:layout_height="match_parent"
+        android:id="@+id/ViewLast"
+        android:layout_marginBottom="@dimen/_5sdp"/>
+</LinearLayout>
