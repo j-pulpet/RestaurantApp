@@ -7,28 +7,35 @@ class BannerModel {
 
     private var item_id: String? = null
 
+    private var cat_id: String? = null
+
+    private var category_name: String? = null
+    private var type: String? = null
+
     fun getImage(): String? {
         return image
     }
 
-    fun setImage(image: String?) {
-        this.image = image
+    fun getCategoryName(): String? {
+        return category_name
     }
 
     fun getId(): String? {
         return id
     }
 
+    fun getItemId(): String? {
+        return item_id
+    }
+    fun getType():String?{
+        return type
+    }
+
+    fun getCatId(): String? {
+        return cat_id
+    }
+
     fun setId(id: String?) {
         this.id = id
     }
-
-    fun getItem_id(): String? {
-        return item_id
-    }
-
-    fun setItem_id(item_id: String?) {
-        this.item_id = item_id
-    }
-
 }

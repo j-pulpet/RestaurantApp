@@ -2,151 +2,147 @@ package com.foodapp.app.api
 
 import com.foodapp.app.model.*
 import com.google.gson.JsonObject
+import com.grocery.app.api.ListResopone
+import com.grocery.app.model.PinCodeResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
 interface ApiInterface {
-    //Login Api 1
+
     @POST("login")
     fun getLogin(@Body map: HashMap<String, String>): Call<RestResponse<LoginModel>>
 
-    //Registration Api 2
     @POST("register")
     fun setRegistration(@Body map: HashMap<String, String>): Call<RestResponse<RegistrationModel>>
 
-    //Profile Api 3
     @POST("getprofile")
-    fun getProfile(@Body map: HashMap<String, String>): Call<RestResponse<ProfileModel>>
+    fun getProfile(@Body map: HashMap<String, String>): Call<GetProfileResponse>
 
-    //EditProfile Api 4
     @Multipart
     @POST("editprofile")
-    fun setProfile(@Part("user_id") userId: RequestBody,@Part("name") name: RequestBody, @Part profileimage: MultipartBody.Part?): Call<SingleResponse>
+    fun setProfile(@Part("user_id") userId: RequestBody, @Part("name") name: RequestBody, @Part profileimage: MultipartBody.Part?): Call<SingleResponse>
 
-    //Chnage Password  Api 5
     @POST("changepassword")
-    fun setChangePassword(@Body map: HashMap<String, String>):Call<SingleResponse>
+    fun setChangePassword(@Body map: HashMap<String, String>): Call<SingleResponse>
 
-    //Category  Api 6
     @GET("category")
-    fun getFoodCategory():Call<ListResponse<FoodCategoryModel>>
+    fun getFoodCategory(): Call<ListResponse<FoodCategoryModel>>
 
-    //Item  Api 7
     @POST("item")
-    fun getFoodItem(@Body map: HashMap<String, String>,@Query("page")strPageNo:String):Call<RestResponse<FoodItemResponseModel>>
+    fun getFoodItem(@Body map: HashMap<String, String>, @Query("page") strPageNo: String): Call<RestResponse<FoodItemResponseModel>>
 
-    //Item  Api 9
     @POST("orderhistory")
-    fun getOrderHistory(@Body map: HashMap<String, String>):Call<ListResponse<OrderHistoryModel>>
+    fun getOrderHistory(@Body map: HashMap<String, String>): Call<ListResponse<OrderHistoryModel>>
 
-    //Item  Api 10
     @GET("rattinglist")
-    fun getRatting():Call<ListResponse<RattingModel>>
+    fun getRatting(): Call<ListResponse<RattingModel>>
 
-    //Getcart  Api 11
     @POST("getcart")
-    fun getCartItem(@Body map: HashMap<String, String>):Call<ListResponse<CartItemModel>>
+    fun getCartItem(@Body map: HashMap<String, String>): Call<ListResponse<CartItemModel>>
 
-    //Ratting  Api 12
     @POST("ratting")
-    fun setRatting(@Body map: HashMap<String, String>):Call<SingleResponse>
+    fun setRatting(@Body map: HashMap<String, String>): Call<SingleResponse>
 
-    //ItemDetail  Api 13
     @POST("itemdetails")
-    fun setItemDetail(@Body map: HashMap<String, String>):Call<RestResponse<ItemDetailModel>>
+    fun setItemDetail(@Body map: HashMap<String, String>): Call<RestResponse<ItemDetailModel>>
 
-    //cart  Api 14
     @POST("cart")
-    fun setAddToCart(@Body map: HashMap<String, String>):Call<SingleResponse>
+    fun setAddToCart(@Body map: HashMap<String, String>): Call<SingleResponse>
 
-    //QtyUpdate Api 15
     @POST("qtyupdate")
-    fun setQtyUpdate(@Body map: HashMap<String, String>):Call<SingleResponse>
+    fun setQtyUpdate(@Body map: HashMap<String, String>): Call<SingleResponse>
 
-    //DeleteCartItem Api 16
     @POST("deletecartitem")
-    fun setDeleteCartItem(@Body map: HashMap<String, String>):Call<SingleResponse>
+    fun setDeleteCartItem(@Body map: HashMap<String, String>): Call<SingleResponse>
 
-    //Summary Api 17
     @POST("summary")
-    fun setSummary(@Body map: HashMap<String, String>):Call<RestSummaryResponse>
+    fun setSummary(@Body map: HashMap<String, String>): Call<RestSummaryResponse>
 
-    //OrderPayment Api 18
     @POST("order")
-    fun setOrderPayment(@Body map: HashMap<String, String>):Call<SingleResponse>
+    fun setOrderPayment(@Body map: HashMap<String, String>): Call<SingleResponse>
 
-    //forgotPassword Api 19
     @POST("forgotPassword")
-    fun setforgotPassword(@Body map: HashMap<String, String>):Call<SingleResponse>
+    fun setforgotPassword(@Body map: HashMap<String, String>): Call<SingleResponse>
 
-    //OrderDetail Api 20
     @POST("getorderdetails")
-    fun setgetOrderDetail(@Body map: HashMap<String, String>):Call<RestOrderDetailResponse>
+    fun setgetOrderDetail(@Body map: HashMap<String, String>): Call<RestOrderDetailResponse>
 
-    //Search Api 21
-    @POST("searchitem")
-    fun setSearch(@Body map: HashMap<String, String>,@Query("page")strPageNo:String):Call<RestResponse<FoodItemResponseModel>>
+    @GET("searchitem")
+    fun setSearch(): Call<ListResponse<SearchItemModel>>
 
-    //PromoCode Api 23
     @POST("favoritelist")
-    fun getFavouriteList(@Body map: HashMap<String, String>,@Query("page")strPageNo:String):Call<RestResponse<FoodFavouriteResponseModel>>
+    fun getFavouriteList(@Body map: HashMap<String, String>, @Query("page") strPageNo: String): Call<RestResponse<FoodFavouriteResponseModel>>
 
-    //AddFavorite Api 24
     @POST("addfavorite")
-    fun setAddFavorite(@Body map: HashMap<String, String>):Call<SingleResponse>
+    fun setAddFavorite(@Body map: HashMap<String, String>): Call<SingleResponse>
 
-    //Removefavorite Api 25
     @POST("removefavorite")
-    fun setRemovefavorite(@Body map: HashMap<String, String>):Call<SingleResponse>
+    fun setRemovefavorite(@Body map: HashMap<String, String>): Call<SingleResponse>
 
-    //PromoCode Api 26
     @GET("promocodelist")
-    fun getPromoCodeList():Call<ListResponse<PromocodeModel>>
+    fun getPromoCodeList(): Call<ListResponse<PromocodeModel>>
 
-    //ApplyPromocode Api 27
     @POST("promocode")
-    fun setApplyPromocode(@Body map: HashMap<String, String>):Call<RestResponse<GetPromocodeModel>>
+    fun setApplyPromocode(@Body map: HashMap<String, String>): Call<RestResponse<GetPromocodeModel>>
 
-    //ApplyPromocode Api 27
     @POST("cartcount")
-    fun getCartCount(@Body map: HashMap<String, String>):Call<CartCountModel>
+    fun getCartCount(@Body map: HashMap<String, String>): Call<CartCountModel>
 
-    //ApplyPromocode Api 28
     @GET("banner")
-    fun getBanner():Call<ListResponse<BannerModel>>
+    fun getBanner(): Call<ListResponse<BannerModel>>
 
-    //LocationApi 29
     @GET("restaurantslocation")
-    fun getLocation():Call<RestResponse<LocationModel>>
+    fun getLocation(): Call<RestResponse<LocationModel>>
 
-    //check Status Api 30
     @GET("isopenclose")
-    fun getCheckStatusRestaurant():Call<SingleResponse>
+    fun getCheckStatusRestaurant(): Call<SingleResponse>
 
-    //Checkpincode Api 31
     @POST("checkpincode")
-    fun setCheckPinCode(@Body map: HashMap<String,String>):Call<SingleResponse>
+    fun setCheckPinCode(@Body map: HashMap<String, String>): Call<SingleResponse>
 
-    //Checkpincode Api 32
-    @POST("resendemailverification")
+    @POST("resendotp")
     fun setResendEmailVerification(@Body map: HashMap<String,String>):Call<SingleResponse>
 
-    //getChatList Api 33
-    @POST("emailverify")
+    @POST("otpverify")
     fun setEmailVerify(@Body map: HashMap<String, String>): Call<JsonObject>
 
-    //Wallet Api 34
     @POST("wallet")
-    fun getWallet(@Body map: HashMap<String, String>):Call<ListResponse<WalletModel>>
+    fun getWallet(@Body map: HashMap<String, String>): Call<ListResponse<WalletModel>>
 
-    //PaymentType Api 35
     @POST("paymenttype")
-    fun getPaymentType(@Body map: HashMap<String, String>):Call<PaymentListResponce>
+    fun getPaymentType(@Body map: HashMap<String, String>): Call<PaymentListResponce>
 
-    //OrderCancel Api 36
     @POST("ordercancel")
-    fun setOrderCancel(@Body map: HashMap<String, String>):Call<SingleResponse>
+    fun setOrderCancel(@Body map: HashMap<String, String>): Call<SingleResponse>
+
+    @POST("address")
+    fun addAddress(@Body map: HashMap<String, String>): Call<SingleResponse>
+
+    @POST("updateaddress")
+    fun updateAddress(@Body map: HashMap<String, String>): Call<SingleResponse>
+
+    @POST("deleteaddress")
+    fun deleteAddress(@Body map: HashMap<String, String>): Call<SingleResponse>
+
+    @POST("getaddress")
+    fun getAddress(@Body map: HashMap<String, String>): Call<ListResopone<AddressResponse>>
+
+    @POST("addmoney")
+    fun addMoney(@Body map: HashMap<String, String>): Call<SingleResponse>
+
+    @GET("pincode")
+    fun getNeighbourhood(): Call<ListResopone<PinCodeResponse>>
+
+    @GET("checkaddons")
+    fun getLoginType(): Call<GetLoginTypeResponseModel>
+
+    @POST("contact")
+    fun contactUs(@Body map: HashMap<String, String>): Call<SingleResponse>
+
+
+    @POST("relateditem")
+    fun getRelatedProduct(@Body map: HashMap<String,String>,@Query("page")strPageNo:String):Call<RestResponse<FoodItemResponseModel>>
 
 }

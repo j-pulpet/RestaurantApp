@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+
+    tools:context=".activity.ActivityNewAddress">
+
+    <RelativeLayout
+        android:id="@+id/rlToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize">
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14ssp"
+            android:layout_centerInParent="true"
+            fontPath="@string/font_thin"
+            android:text="@string/new_address"
+            android:textAllCaps="false"
+            android:id="@+id/tvAddressTitle"
+            tools:ignore="MissingPrefix" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_height="0dp">
+
+
+        <TextView
+            android:id="@+id/tvAddressType"
+            fontPath="@string/font_medium"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:ellipsize="end"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:maxLines="1"
+            android:inputType="text"
+            android:imeOptions="actionGo"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="@drawable/bg_white_10"
+            android:gravity="center_vertical|start"
+            android:textAlignment="viewStart"
+            android:textDirection="locale"
+            android:hint="@string/select_address_type"
+            android:textSize="@dimen/_10ssp"
+            tools:ignore="MissingPrefix" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/spAddressType"
+            android:layout_gravity="bottom"
+            android:gravity="bottom"
+            android:spinnerMode="dropdown"
+            android:background="@android:color/transparent"
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_white_10"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:gravity="center"
+            android:layout_height="@dimen/_40sdp">
+
+        <TextView
+            android:id="@+id/edtAddress"
+            fontPath="@string/font_medium"
+            android:layout_width="0dp"
+            android:textColor="@color/black"
+            android:ellipsize="end"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:maxLines="1"
+            android:layout_weight="1"
+            android:inputType="text"
+            android:imeOptions="actionGo"
+            android:layout_height="@dimen/_35sdp"
+            android:gravity="center_vertical|start"
+            android:textAlignment="viewStart"
+            android:textDirection="locale"
+            android:hint="@string/select_address"
+            android:textSize="@dimen/_10ssp"
+            tools:ignore="MissingPrefix" />
+
+            <ImageView
+                android:id="@+id/ivGetLocation"
+                android:layout_width="@dimen/_24sdp"
+                android:src="@drawable/ic_location"
+                app:tint="@color/colorPrimary"
+                android:layout_marginEnd="5dp"
+                android:layout_height="@dimen/_24sdp"/>
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/edtZipCode"
+            fontPath="@string/font_medium"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:ellipsize="end"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:maxLines="1"
+            android:inputType="text"
+            android:imeOptions="actionGo"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="@drawable/bg_white_10"
+            android:gravity="center_vertical|start"
+            android:textAlignment="viewStart"
+            android:textDirection="locale"
+            android:textSize="@dimen/_10ssp"
+            android:hint="@string/pincode"
+            tools:ignore="MissingPrefix" />
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/spPinCode"
+            android:layout_gravity="bottom"
+            android:gravity="bottom"
+            android:spinnerMode="dropdown"
+            android:background="@android:color/transparent"
+            />
+        <EditText
+            android:id="@+id/edtDoorNo"
+            fontPath="@string/font_medium"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:ellipsize="end"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:maxLines="1"
+            android:inputType="text"
+            android:imeOptions="actionGo"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="@drawable/bg_white_10"
+            android:gravity="center_vertical|start"
+            android:textAlignment="viewStart"
+            android:textDirection="locale"
+            android:hint="@string/door_flat_no"
+            android:textSize="@dimen/_10ssp"
+            tools:ignore="MissingPrefix" />
+
+
+
+        <EditText
+            android:id="@+id/edtLandMark"
+            fontPath="@string/font_medium"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:ellipsize="end"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:maxLines="1"
+            android:inputType="text"
+            android:imeOptions="actionGo"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="@drawable/bg_white_10"
+            android:gravity="center_vertical|start"
+
+            android:textAlignment="viewStart"
+            android:textDirection="locale"
+            android:hint="@string/landmark_"
+            android:textSize="@dimen/_10ssp"
+            tools:ignore="MissingPrefix" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvSaveAddress"
+        fontPath="@string/font_bold"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bg_corner_white_10"
+        android:backgroundTint="@color/colorPrimary"
+        android:gravity="center"
+        android:text="@string/save_address"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12ssp"
+        tools:ignore="MissingPrefix" />
+</LinearLayout>

@@ -11,8 +11,17 @@ class FavouriteFoodModel {
 
     private var id: String? = null
 
+    private var variation: List<VariationItem>? = null
+
     fun getItemimage(): FoodItemImageModel? {
         return itemimage
+    }
+    fun getVariation(): List<VariationItem>? {
+        return variation
+    }
+
+    fun setVariation(variation: List<VariationItem>?) {
+        this.variation = variation
     }
 
     fun setItemimage(itemimage: FoodItemImageModel?) {

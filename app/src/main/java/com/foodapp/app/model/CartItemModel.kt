@@ -1,54 +1,62 @@
 package com.foodapp.app.model
 
 class CartItemModel {
-    private var itemimage: FoodItemImageModel? = null
-    private var item_id: String? = null
-    private var price: String? = null
-    private var qty: String? = null
-    private var item_name: String? = null
-    private var id: String? = null
-    private var addons_id: String? = null
-    private var item_notes: String? = null
-    private var addons: ArrayList<AddonsModel>?=null
 
-    fun getItemimage(): FoodItemImageModel? {
-        return itemimage
+    private var itemimage: FoodItemImageModel? = null
+
+    private var item_id: String? = null
+
+    private var price: String? = null
+
+    private var qty: String? = null
+
+    private var item_name: String? = null
+
+    private var id: String? = null
+
+    private var addons_id: String? = null
+
+    private var addons_name: String? = null
+
+    private var addons_price: String? = null
+
+    private var item_notes: String? = null
+
+    private var item_image: String? = null
+    private var variation: String? = null
+
+    private var addons: ArrayList<AddonsModel>? = null
+
+    fun getItemImage(): String? {
+        return item_image
     }
 
-    fun setItemimage(itemimage: FoodItemImageModel?) {
-        this.itemimage = itemimage
+    fun getVariation(): String? {
+        return variation
     }
 
     fun getItem_id(): String? {
         return item_id
     }
 
-    fun setItem_id(item_id: String?) {
-        this.item_id = item_id
+    fun getAddOnsPrice(): String? {
+        return addons_price
+    }
+
+    fun getAddOnsName(): String? {
+        return addons_name
     }
 
     fun getPrice(): String? {
         return price
     }
 
-    fun setPrice(price: String?) {
-        this.price = price
-    }
-
     fun getQty(): String? {
         return qty
     }
 
-    fun setQty(qty: String?) {
-        this.qty = qty
-    }
-
     fun getItem_name(): String? {
         return item_name
-    }
-
-    fun setItem_name(item_name: String?) {
-        this.item_name = item_name
     }
 
     fun getId(): String? {
@@ -63,24 +71,7 @@ class CartItemModel {
         return item_notes
     }
 
-    fun setItem_notes(item_notes: String?) {
-        this.item_notes = item_notes
-    }
-
-    fun getAddons(): ArrayList<AddonsModel> {
-        return addons!!
-    }
-
-    fun setAddons(addons: ArrayList<AddonsModel>?) {
-        this.addons = addons
-    }
-
     fun getAddons_id(): String? {
         return addons_id
     }
-
-    fun setAddons_id(addons_id: String?) {
-        this.addons_id = addons_id
-    }
-
 }

@@ -17,7 +17,7 @@
             android:layout_width="@dimen/_35sdp"
             android:layout_height="@dimen/_35sdp"
             android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/_minus1sdp"
+            android:layout_marginStart="@dimen/_4sdp"
             android:onClick="onClick"
             android:padding="@dimen/_5sdp"
             android:src="@drawable/ic_back" />

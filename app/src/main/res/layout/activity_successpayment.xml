@@ -35,18 +35,20 @@
             android:textSize="@dimen/_12ssp"
             android:textColor="@color/black"
             tools:ignore="MissingPrefix" />
+
         <TextView
-            fontPath="@string/font_thin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/continue_shooping"
             android:id="@+id/tvProceed"
-            android:background="@color/colorPrimary"
-            android:paddingTop="@dimen/_10sdp"
-            android:paddingBottom="@dimen/_10sdp"
+            fontPath="@string/font_bold"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bg_corner_white_10"
+            android:backgroundTint="@color/colorPrimary"
+            android:gravity="center"
+            android:text="@string/continue_shooping"
             android:textColor="@color/white"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="@dimen/_12ssp"
             tools:ignore="MissingPrefix" />
     </LinearLayout>
 </RelativeLayout>

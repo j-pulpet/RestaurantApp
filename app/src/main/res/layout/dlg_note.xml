@@ -20,7 +20,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -61,7 +61,7 @@
                 fontPath="@string/font_medium"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginRight="@dimen/_2sdp"
+                android:layout_marginEnd="@dimen/_2sdp"
                 android:background="@android:color/transparent"
                 android:ellipsize="end"
                 android:gravity="start"
@@ -77,10 +77,10 @@
             fontPath="@string/font_thin"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_35sdp"
-            android:layout_marginLeft="@dimen/_12sdp"
-            android:layout_marginRight="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
             android:background="@drawable/bg_corner_white_10"
-            android:backgroundTint="@color/light_orange"
+            android:backgroundTint="@color/colorPrimary"
             android:gravity="center"
             android:text="@string/okay"
             android:textColor="@color/white"

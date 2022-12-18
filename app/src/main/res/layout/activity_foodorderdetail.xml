@@ -17,11 +17,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/trans_black" />
-
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
             android:layout_width="wrap_content"
@@ -97,20 +92,6 @@
                 </RelativeLayout>
 
             </RelativeLayout>
-
-            <!-- <ImageView
-                 android:id="@+id/ivCart"
-                 android:layout_width="40dp"
-                 android:layout_height="40dp"
-                 android:layout_alignParentRight="true"
-                 android:layout_marginTop="@dimen/_6sdp"
-                 android:layout_marginRight="@dimen/_6sdp"
-                 android:background="@drawable/bg_orangecornertrans_10"
-                 android:onClick="onClick"
-                 android:padding="@dimen/_5sdp"
-                 android:src="@drawable/ic_cart"
-                 android:tint="@color/white"
-                 tools:ignore="MissingConstraints" />-->
         </RelativeLayout>
     </RelativeLayout>
 
@@ -151,31 +132,48 @@
                             android:textColor="@color/black"
                             android:textSize="@dimen/_12ssp"
                             tools:ignore="MissingPrefix"
-                            tools:text="Test Meals" />
+                            tools:text="-" />
 
                     </RelativeLayout>
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:layout_marginRight="@dimen/_5sdp"
-                        android:layout_marginBottom="@dimen/_5sdp">
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_marginBottom="@dimen/_3sdp">
 
                         <TextView
                             android:id="@+id/tvFoodType"
                             fontPath="@string/font_medium"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_marginEnd="@dimen/_5sdp"
-                            android:layout_toStartOf="@id/tvFoodPrice"
-                            android:gravity="start"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@id/tvSalePrice"
                             android:textAlignment="viewStart"
                             android:textColor="@color/gray"
-                            android:textSize="@dimen/_10ssp"
+
+                            android:textSize="@dimen/_12ssp"
                             tools:ignore="MissingPrefix"
-                            tools:text="Test Meals" />
+                            tools:text="starters" />
+
+                        <TextView
+                            android:id="@+id/tvSalePrice"
+                            fontPath="@string/font_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toStartOf="@+id/tvFoodPrice"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/_9ssp"
+                            android:textAlignment="viewEnd"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginEnd="3dp"
+                            tools:ignore="MissingPrefix"
+                            tools:text="13000" />
 
                         <TextView
                             android:id="@+id/tvFoodPrice"
@@ -183,13 +181,48 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:layout_gravity="end"
-                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_centerVertical="true"
                             android:textColor="@color/colorPrimary"
                             android:textSize="@dimen/_12ssp"
+                            android:textAlignment="viewEnd"
                             tools:ignore="MissingPrefix"
-                            tools:text="$ 100" />
+                            tools:text="14000" />
+
                     </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvFoodWeightType"
+                        fontPath="@string/font_regular"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10ssp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_below="@id/tvFoodType"
+                        tools:ignore="MissingPrefix"
+                        android:textAlignment="viewStart"
+                        android:textDirection="locale"
+                        tools:text="@string/weight" />
+                    <TextView
+                        android:id="@+id/tvTaxesNote"
+                        fontPath="@string/font_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_3sdp"
+                        android:text="Inclusive of all taxes"
+                        android:textColor="@color/status4"
+                        android:textSize="@dimen/_9ssp"
+
+                        tools:ignore="MissingPrefix" />
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/tvTime"
@@ -199,11 +232,81 @@
                         android:layout_gravity="end"
                         android:layout_marginEnd="@dimen/_5sdp"
                         android:layout_marginBottom="@dimen/_5sdp"
+                        android:text="@string/estimated_time"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_10ssp"
-                        tools:ignore="MissingPrefix"
-                        tools:text="60 - 100 Min" />
+                        tools:ignore="MissingPrefix" />
 
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvSelectVariation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/cvFoodName"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                app:cardCornerRadius="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_5sdp">
+
+                    <TextView
+                        fontPath="@string/font_bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:text="@string/select_variation"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp"
+                        android:textDirection="locale"
+                        android:textAlignment="viewStart"
+                        tools:ignore="MissingPrefix" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rlPrice">
+                        <TextView
+                            android:id="@+id/tvVariation"
+                            fontPath="@string/font_regular"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_toStartOf="@id/ivDropDown"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10ssp"
+                            android:textDirection="locale"
+                            android:textAlignment="viewStart"
+                            tools:ignore="MissingPrefix"
+                            tools:text="60 - 100 Min" />
+                        <ImageView
+                            android:id="@+id/ivDropDown"
+                            fontPath="@string/font_medium"
+                            android:layout_width="@dimen/_22sdp"
+                            android:layout_height="@dimen/_22sdp"
+                            android:src="@drawable/ic_dropdown"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            app:tint="@color/black"
+                            tools:ignore="MissingPrefix" />
+
+                    </RelativeLayout>
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:id="@+id/spWeight"
+                        android:layout_gravity="bottom"
+                        android:gravity="bottom"
+                        android:background="@android:color/transparent"
+                        />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -212,7 +315,7 @@
                 android:id="@+id/cvFoodDetail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/cvFoodName"
+                android:layout_below="@id/cvSelectVariation"
                 android:layout_marginHorizontal="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
                 app:cardCornerRadius="5dp">
@@ -246,9 +349,10 @@
                         android:textColor="@color/black"
                         android:textSize="@dimen/_10ssp"
                         tools:ignore="MissingPrefix"
-                        tools:text="60 - 100 Min" />
+                        tools:text="-" />
 
                     <RelativeLayout
+                        android:id="@+id/relAddOns"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -278,7 +382,7 @@
                                 android:layout_alignParentEnd="true"
                                 android:padding="@dimen/_4sdp"
                                 android:src="@drawable/ic_add_sevice"
-                                app:tint="@color/light_orange" />
+                                app:tint="@color/colorPrimary" />
                         </RelativeLayout>
 
                         <androidx.recyclerview.widget.RecyclerView
@@ -339,6 +443,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/tvIngredientsTitle"
                         fontPath="@string/font_bold"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -353,6 +458,7 @@
                         tools:ignore="MissingPrefix" />
 
                     <LinearLayout
+                        android:id="@+id/linearIngrediants"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
@@ -374,6 +480,65 @@
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+            <TextView
+                fontPath="@string/font_bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:text="@string/related_products"
+                android:id="@+id/relatedProduct"
+                android:layout_below="@id/cvFoodDetail"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                android:textDirection="locale"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:textAlignment="viewStart"
+                tools:ignore="MissingPrefix" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_70sdp"
+                android:gravity="center"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:id="@+id/tvItem"
+                android:layout_below="@id/relatedProduct"
+                android:text="@string/no_data_found"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/_12sdp"
+                android:textDirection="locale"
+                android:textAlignment="center"
+                tools:ignore="MissingPrefix"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:visibility="visible"
+                tools:visibility="visible"
+                android:layout_below="@id/relatedProduct">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvItemRelatedProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@id/llProgressbar"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginHorizontal="@dimen/_5sdp"
+                    />
+                <LinearLayout
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    android:id="@+id/llProgressbar"
+                    android:layout_alignParentEnd="true">
+                    <ProgressBar
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:indeterminateTint="@color/colorPrimary"
+                        android:layout_gravity="center_vertical"/>
+                </LinearLayout>
+            </RelativeLayout>
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 
@@ -411,6 +576,7 @@
             android:layout_marginStart="@dimen/_12sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
+            android:visibility="gone"
             android:layout_marginBottom="@dimen/_10sdp">
 
             <ImageView
@@ -420,7 +586,9 @@
                 android:layout_height="@dimen/_20sdp"
                 android:src="@drawable/ic_minus"
                 android:textSize="@dimen/_12ssp"
-                app:tint="@color/light_orange"
+                android:visibility="gone"
+
+                app:tint="@color/colorPrimary"
                 tools:ignore="MissingPrefix" />
 
             <TextView
@@ -433,6 +601,7 @@
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_toEndOf="@id/ivMinus"
                 android:text="1"
+                android:visibility="gone"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_10ssp"
                 tools:ignore="MissingPrefix" />
@@ -445,7 +614,8 @@
                 android:layout_toEndOf="@id/tvFoodQty"
                 android:src="@drawable/ic_plus"
                 android:textSize="@dimen/_12ssp"
-                app:tint="@color/light_orange"
+                app:tint="@color/colorPrimary"
+                android:visibility="gone"
                 tools:ignore="MissingPrefix" />
 
         </RelativeLayout>
@@ -457,17 +627,18 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
             android:layout_marginBottom="@dimen/_10sdp"
             android:layout_toEndOf="@id/rlQty"
             android:background="@drawable/bg_editfield"
-            android:backgroundTint="@color/light_orange"
+            android:backgroundTint="@color/colorPrimary"
             android:gravity="center_horizontal"
             android:onClick="onClick"
             android:padding="@dimen/_10sdp"
             android:textColor="@color/white"
             android:textSize="@dimen/_12ssp"
             tools:ignore="MissingPrefix"
-            tools:text="Add To Cart $ 0.0" />
+            tools:text="@string/addtocart" />
     </RelativeLayout>
 
 </RelativeLayout>

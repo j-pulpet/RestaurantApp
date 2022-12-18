@@ -38,7 +38,7 @@
                 app:riv_corner_radius="5dp"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_marginBottom="@dimen/_5sdp"
-                android:src="@drawable/temp_barger"
+                android:src="@drawable/ic_placeholder"
                 tools:ignore="MissingPrefix" />
 
             <TextView
@@ -50,7 +50,7 @@
                 android:layout_marginBottom="@dimen/_8sdp"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="@string/barger"
+                android:text="-"
                 android:maxLines="1"
                 android:ellipsize="end"
                 android:textColor="@color/black"

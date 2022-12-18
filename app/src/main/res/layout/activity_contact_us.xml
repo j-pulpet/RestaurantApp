@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_orange"
+    android:orientation="vertical"
+    tools:context=".activity.ContactUsActivity">
+
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:fillViewport="true"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:id="@+id/rlTitle"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize">
+
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/ic_back" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14ssp"
+            android:id="@+id/tvTitle"
+            android:layout_centerInParent="true"
+            fontPath="@string/font_thin"
+            android:text="@string/help_amp_contact_us"
+            tools:ignore="MissingPrefix" />
+    </RelativeLayout>
+
+    <TextView
+        fontPath="@string/font_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:text="@string/contact_us"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_13ssp"
+        tools:ignore="MissingPrefix" />
+
+
+
+
+        <LinearLayout
+            android:id="@+id/linerPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:orientation="horizontal">
+
+            <ImageView
+                fontPath="@string/font_medium"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:src="@drawable/ic_phone_call"
+                android:textSize="@dimen/_12ssp"
+                tools:ignore="MissingPrefix" />
+
+            <TextView
+                android:id="@+id/tvPhoneNumber"
+                fontPath="@string/font_medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="viewStart"
+                android:gravity="start|center_vertical"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11ssp"
+                tools:ignore="MissingPrefix" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:orientation="horizontal">
+
+            <ImageView
+                fontPath="@string/font_medium"
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:src="@drawable/ic_contact_mail"
+                android:textSize="@dimen/_12ssp"
+                app:tint="@color/colorPrimary"
+                tools:ignore="MissingPrefix" />
+
+            <TextView
+                android:id="@+id/tvEmailAddress"
+                fontPath="@string/font_medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="viewStart"
+                android:gravity="start|center_vertical"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11ssp"
+                tools:ignore="MissingPrefix" />
+        </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:orientation="horizontal">
+
+        <ImageView
+            fontPath="@string/font_medium"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_18sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:src="@drawable/ic_home"
+            android:textSize="@dimen/_12ssp"
+            app:tint="@color/colorPrimary"
+            tools:ignore="MissingPrefix" />
+
+        <TextView
+            android:id="@+id/tvAddress"
+            fontPath="@string/font_medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="viewStart"
+            android:gravity="start|center_vertical"
+            android:lineSpacingExtra="1dp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11ssp"
+            tools:ignore="MissingPrefix" />
+    </LinearLayout>
+
+    <TextView
+        fontPath="@string/font_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:text="@string/inquiry_form"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_13ssp"
+        tools:ignore="MissingPrefix" />
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:weightSum="2"
+        android:layout_height="wrap_content">
+
+
+        <EditText
+            android:id="@+id/tvFirstName"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_weight="1"
+            android:hint="@string/first_name"
+            android:paddingStart="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:textSize="@dimen/_12ssp"
+            android:textAlignment="viewStart"
+            android:background="@drawable/bg_roundwhite5"/>
+
+        <EditText
+            android:id="@+id/tvLastName"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_weight="1"
+            android:hint="@string/last_name"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:paddingStart="@dimen/_8sdp"
+            android:textSize="@dimen/_12ssp"
+            android:textAlignment="viewStart"
+
+            android:layout_marginStart="@dimen/_4sdp"
+            android:background="@drawable/bg_roundwhite5"/>
+
+    </LinearLayout>
+    <EditText
+        android:id="@+id/edEmail"
+        fontPath="@string/font_medium"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@drawable/bg_roundwhite5"
+        android:hint="@string/email"
+        android:textAlignment="viewStart"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:gravity="start|center_vertical"
+        android:imeOptions="actionNext"
+        android:paddingLeft="@dimen/_10sdp"
+        android:paddingRight="@dimen/_10sdp"
+        android:singleLine="true"
+        android:textSize="@dimen/_12ssp"
+        tools:ignore="MissingPrefix" />
+
+
+    <EditText
+        android:id="@+id/edMessage"
+        fontPath="@string/font_medium"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@drawable/bg_roundwhite5"
+        android:hint="@string/message_text"
+        android:textAlignment="viewStart"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:gravity="start|center_vertical"
+        android:imeOptions="actionNext"
+        android:paddingLeft="@dimen/_10sdp"
+        android:paddingRight="@dimen/_10sdp"
+        android:singleLine="true"
+        android:textSize="@dimen/_12ssp"
+        tools:ignore="MissingPrefix" />
+
+    <TextView
+        android:id="@+id/btnSubmit"
+        fontPath="@string/font_bold"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@drawable/bg_editfield"
+        android:backgroundTint="@color/colorPrimary"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/_10sdp"
+        android:text="@string/submit"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12ssp"
+        tools:ignore="MissingPrefix" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            fontPath="@string/font_medium"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:src="@drawable/facebook"
+            android:textSize="@dimen/_12ssp"
+            android:id="@+id/ivFacebook"
+            tools:ignore="MissingPrefix" />
+        <ImageView
+            fontPath="@string/font_medium"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:src="@drawable/instagram"
+            android:textSize="@dimen/_12ssp"
+            android:id="@+id/ivInstagram"
+            tools:ignore="MissingPrefix" />
+        <ImageView
+            fontPath="@string/font_medium"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:src="@drawable/twitter"
+            android:textSize="@dimen/_12ssp"
+            android:id="@+id/ivTwitter"
+            tools:ignore="MissingPrefix" />
+    </LinearLayout>
+</RelativeLayout>

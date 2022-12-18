@@ -17,7 +17,7 @@
             android:layout_width="@dimen/_35sdp"
             android:layout_height="@dimen/_35sdp"
             android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/_minus1sdp"
+            android:layout_marginStart="@dimen/_4sdp"
             android:onClick="onClick"
             android:padding="@dimen/_5sdp"
             android:src="@drawable/ic_back" />
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Order Detail"
+            android:text="@string/order_detail"
             android:textColor="@color/black"
             android:textSize="@dimen/_14ssp"
             tools:ignore="MissingPrefix" />
@@ -55,13 +55,184 @@
                 android:text="@string/order_summary"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12ssp"
+                android:visibility="gone"
                 tools:ignore="MissingPrefix" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvOrderInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                app:cardCornerRadius="10dp"
+                android:layout_below="@id/tvTitleOrderSummery"
+                app:cardBackgroundColor="@color/white"
+                app:cardPreventCornerOverlap="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layoutDirection="locale"
+                        android:id="@+id/rlQtyNo">
+                        <TextView
+                            android:id="@+id/tvTitleOrderNumber"
+                            fontPath="@string/font_thin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_gravity="center|start"
+                            android:text="@string/order_id_"
+                            android:layout_alignParentStart="true"
+                            android:textDirection="locale"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10ssp"
+                            tools:ignore="MissingPrefix" />
+                        <TextView
+                            android:id="@+id/tvOrderNumber"
+                            fontPath="@string/font_thin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:layout_toEndOf="@id/tvTitleOrderNumber"
+                            tools:text="1233"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10ssp"
+                            tools:ignore="MissingPrefix" />
+
+                        <TextView
+                            android:id="@+id/tvOrderType"
+                            fontPath="@string/font_thin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            tools:text="Type"
+                            android:textAlignment="viewEnd"
+                            android:textDirection="locale"
+                            android:gravity="end"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10ssp"
+                            tools:ignore="MissingPrefix" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/rlQtyNo"
+                        android:layoutDirection="locale"
+                        android:layout_marginTop="@dimen/_7sdp"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:id="@+id/rlQty">
+
+                        <TextView
+                            android:id="@+id/tvQty"
+                            fontPath="@string/font_thin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_gravity="center|start"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_2sdp"
+                            android:text="@string/payment_type_"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/black"
+                            android:textDirection="locale"
+                            android:textSize="@dimen/_10ssp"
+                            tools:ignore="MissingPrefix" />
+                        <TextView
+                            android:id="@+id/tvPaymentType"
+                            fontPath="@string/font_thin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            tools:text="04"
+                            android:layout_toEndOf="@id/tvQty"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10ssp"
+                            tools:ignore="MissingPrefix"
+                            android:textDirection="locale"
+                            android:textAlignment="viewStart"
+                            />
+                        <TextView
+                            android:id="@+id/tvPayment"
+                            fontPath="@string/font_thin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:text="$120"
+                            android:textColor="@color/red"
+                            android:textSize="@dimen/_10ssp"
+                            android:gravity="end"
+                            tools:ignore="MissingPrefix"
+                            android:textAlignment="viewEnd"
+                            android:textDirection="locale"
+                            android:visibility="gone"
+                            android:layout_alignParentEnd="true" />
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/rlQty"
+                        android:id="@+id/rlOrder"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:paddingTop="@dimen/_2sdp"
+                        android:paddingBottom="@dimen/_2sdp"
+                        android:background="@drawable/bg_bottem_status">
+                        <TextView
+                            android:id="@+id/tvOrderStatus"
+                            fontPath="@string/font_thin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            tools:text="-"
+                            android:layout_marginTop="@dimen/_3sdp"
+                            android:layout_marginBottom="@dimen/_3sdp"
+                            android:visibility="visible"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp"
+                            android:textAlignment="viewStart"
+                            tools:ignore="MissingPrefix" />
+
+                        <TextView
+                            android:id="@+id/tvOrderDate"
+                            fontPath="@string/font_thin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            tools:text="12,March,2021"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="@dimen/_3sdp"
+                            android:layout_marginBottom="@dimen/_3sdp"
+                            android:visibility="visible"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10ssp"
+                            android:textAlignment="viewEnd"
+
+                            tools:ignore="MissingPrefix" />
+                    </RelativeLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvOrderItemFood"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvTitleOrderSummery"
+                android:layout_below="@id/cvOrderInfo"
                 android:layout_marginTop="@dimen/_7sdp" />
 
             <androidx.cardview.widget.CardView
@@ -69,9 +240,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/rvOrderItemFood"
-                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_4sdp"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="1dp">
@@ -116,8 +287,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_10ssp"
                             tools:ignore="MissingPrefix" />
@@ -146,8 +317,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_10ssp"
                             tools:ignore="MissingPrefix" />
@@ -175,8 +346,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_10ssp"
                             tools:ignore="MissingPrefix" />
@@ -208,7 +379,7 @@
                             android:layout_below="@+id/tvTitleDic"
                             android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_4sdp"
-                            android:textColor="@color/light_orange"
+                            android:textColor="@color/colorPrimary"
                             android:textSize="@dimen/_8ssp"
                             tools:ignore="MissingPrefix"
                             tools:text="" />
@@ -219,8 +390,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_10ssp"
                             tools:ignore="MissingPrefix"
@@ -244,7 +415,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_10sdp"
                             android:text="@string/total_amount"
-                            android:textColor="@color/light_orange"
+                            android:textColor="@color/colorPrimary"
                             android:textSize="@dimen/_12ssp"
                             tools:ignore="MissingPrefix" />
 
@@ -254,9 +425,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:layout_marginRight="@dimen/_10sdp"
-                            android:textColor="@color/black"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:textColor="@color/colorPrimary"
                             android:textSize="@dimen/_12ssp"
                             tools:ignore="MissingPrefix" />
                     </FrameLayout>
@@ -268,9 +439,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/cvPaymentSummerDetail"
-                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_7sdp"
-                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 android:visibility="gone"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="1dp">
@@ -324,7 +495,7 @@
                             android:layout_toStartOf="@+id/llCall"
                             android:layout_toEndOf="@id/ivUserDetail"
                             android:gravity="start"
-                            android:text="Jhone"
+                            tools:text="-"
                             android:textAlignment="viewStart"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_12ssp"
@@ -339,7 +510,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:background="@drawable/bg_round_white"
-                            android:backgroundTint="@color/light_orange"
+                            android:backgroundTint="@color/colorPrimary"
                             android:gravity="center">
 
                             <ImageView
@@ -359,11 +530,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/cvDriverInformation"
-                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_5sdp"
                 android:visibility="gone"
+                tools:visibility="visible"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="1dp">
 
@@ -391,8 +563,8 @@
                         fontPath="@string/font_medium"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_35sdp"
-                        android:layout_marginLeft="@dimen/_10sdp"
-                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
                         android:layout_marginBottom="@dimen/_10sdp"
                         android:background="@drawable/bg_editfield"
                         android:gravity="center_vertical|start"
@@ -421,23 +593,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/_10sdp">
 
-                        <!-- <ImageView
-                             android:layout_width="@dimen/_20sdp"
-                             android:layout_height="@dimen/_20sdp"
-                             android:layout_gravity="center_vertical"
-                             android:layout_marginLeft="@dimen/_10sdp"
-                             android:src="@drawable/ic_location"
-                             android:id="@+id/ivLocation"
-                             app:tint="@color/light_orange" />-->
-
                         <TextView
                             android:id="@+id/edBuilding"
                             fontPath="@string/font_medium"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_35sdp"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
                             android:background="@drawable/bg_editfield"
                             android:gravity="center_vertical|start"
                             android:textAlignment="viewStart"
@@ -459,7 +622,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginBottom="@dimen/_5sdp"
-                        android:text="@string/landmark"
+                        android:text="@string/landmark_"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12ssp"
                         tools:ignore="MissingPrefix" />
@@ -477,11 +640,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_35sdp"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
                             android:background="@drawable/bg_editfield"
                             android:gravity="center_vertical|start"
-                            android:hint="@string/landmark"
+                            android:hint="@string/landmark_"
                             android:textAlignment="viewStart"
                             android:imeOptions="actionGo"
                             android:inputType="textMultiLine"
@@ -517,8 +680,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_35sdp"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:layout_marginRight="@dimen/_10sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
                             android:background="@drawable/bg_editfield"
                             android:editable="false"
                             android:gravity="center_vertical|start"
@@ -539,9 +702,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/cvDeliveryAddress"
-                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:visibility="gone"
                 app:cardCornerRadius="5dp"
@@ -559,7 +722,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_5sdp"
                         android:layout_marginTop="@dimen/_5sdp"
-                        android:text="Notes"
+                        android:text="@string/notes"
                         android:textAlignment="viewStart"
                         android:gravity="start"
                         android:textColor="@color/black"
@@ -570,9 +733,9 @@
                         android:id="@+id/llDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_2sdp"
+                        android:layout_marginStart="@dimen/_2sdp"
                         android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_marginRight="@dimen/_2sdp"
+                        android:layout_marginEnd="@dimen/_2sdp"
                         android:layout_marginBottom="@dimen/_5sdp"
                         android:orientation="vertical">
 
@@ -590,7 +753,6 @@
                             android:paddingTop="@dimen/_2sdp"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_10ssp"
-                            tools:Text="Write Order Notes"
                             tools:ignore="MissingPrefix" />
                     </LinearLayout>
                 </LinearLayout>
@@ -605,9 +767,9 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_35sdp"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_10sdp"
         android:background="@drawable/bg_editfield"
         android:backgroundTint="@color/red"

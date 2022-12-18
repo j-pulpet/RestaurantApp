@@ -37,7 +37,7 @@
                     android:textAlignment="viewStart"
                     android:gravity="start"
                     tools:ignore="MissingPrefix"
-                    tools:text="Salad" />
+                    tools:text="-" />
 
                 <TextView
                     android:id="@+id/tvAddonsPrice"
@@ -54,7 +54,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/_10sdp"
                     tools:ignore="MissingPrefix"
-                    tools:text="Salad" />
+                    tools:text="-" />
             </RelativeLayout>
 
             <ImageView
@@ -67,7 +67,7 @@
                 android:background="@drawable/bg_strock_orange"
                 android:padding="@dimen/_5sdp"
                 android:src="@drawable/ic_cross"
-                app:tint="@color/light_orange" />
+                app:tint="@color/colorPrimary" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

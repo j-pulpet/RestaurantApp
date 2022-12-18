@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal">
                 <TextView
-                    fontPath="@string/font_mark_web_thin"
+                    fontPath="@string/font_thin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

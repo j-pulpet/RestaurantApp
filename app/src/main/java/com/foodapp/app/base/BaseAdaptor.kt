@@ -5,12 +5,11 @@ import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 
 abstract class BaseAdaptor<T>(private val context: Activity, private var items: ArrayList<T>) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+        RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     abstract fun onBindData(holder: RecyclerView.ViewHolder?, `val`: T, position: Int)
     abstract fun setItemLayout(): Int
@@ -33,5 +32,5 @@ abstract class BaseAdaptor<T>(private val context: Activity, private var items: 
     }
 
     internal inner class ViewHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView)
+            RecyclerView.ViewHolder(itemView)
 }

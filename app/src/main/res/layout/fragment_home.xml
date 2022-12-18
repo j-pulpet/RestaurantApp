@@ -15,8 +15,10 @@
             android:id="@+id/ivMenu"
             android:layout_width="@dimen/_38sdp"
             android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_7sdp"
             android:padding="@dimen/_8sdp"
-            android:src="@drawable/ic_nevigation" />
+            android:src="@drawable/ic_nevigation"
+            />
 
         <TextView
             fontPath="@string/font_thin"
@@ -49,7 +51,7 @@
                 android:background="@drawable/bg_roundwhite5"
                 android:padding="@dimen/_8sdp"
                 android:src="@drawable/ic_location"
-                app:tint="@color/light_orange" />
+                app:tint="@color/colorPrimary" />
 
             <ImageView
                 android:id="@+id/ivSearch"
@@ -59,7 +61,7 @@
                 android:background="@drawable/bg_roundwhite5"
                 android:padding="@dimen/_8sdp"
                 android:src="@drawable/ic_search"
-                app:tint="@color/light_orange" />
+                app:tint="@color/colorPrimary" />
 
             <RelativeLayout
                 android:layout_width="@dimen/_38sdp"
@@ -75,7 +77,7 @@
                     android:layout_centerVertical="true"
                     android:padding="@dimen/_8sdp"
                     android:src="@drawable/ic_cart"
-                    app:tint="@color/light_orange" />
+                    app:tint="@color/colorPrimary" />
 
                 <RelativeLayout
                     android:id="@+id/rlCount"

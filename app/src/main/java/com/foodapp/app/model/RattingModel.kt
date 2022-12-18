@@ -13,31 +13,15 @@ class RattingModel {
         return ratting
     }
 
-    fun setRatting(ratting: String?) {
-        this.ratting = ratting
-    }
-
     fun getName(): String? {
         return name
-    }
-
-    fun setName(name: String?) {
-        this.name = name
     }
 
     fun getCreated_at(): String? {
         return created_at
     }
 
-    fun setCreated_at(created_at: String?) {
-        this.created_at = created_at
-    }
-
     fun getComment(): String? {
         return comment
-    }
-
-    fun setComment(comment: String?) {
-        this.comment = comment
     }
 }

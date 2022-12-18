@@ -25,7 +25,6 @@ import com.foodapp.app.utils.SharePreference
 import com.foodapp.app.utils.SharePreference.Companion.getStringPref
 import kotlinx.android.synthetic.main.activity_categorybyproduct.*
 import kotlinx.android.synthetic.main.activity_categorybyproduct.ivBack
-import kotlinx.android.synthetic.main.activity_editprofile.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,7 +33,7 @@ import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
 
-class CategoryByFoodActivity:BaseActivity() {
+class CategoryByFoodActivity : BaseActivity() {
     var CURRENT_PAGES: Int = 1
     var TOTAL_PAGES: Int = 0
     var foodAdapter: BaseAdaptor<FoodItemModel>? = null
@@ -42,29 +41,29 @@ class CategoryByFoodActivity:BaseActivity() {
     var manager1: GridLayoutManager? = null
     var rvFoodData: RecyclerView? = null
     var tvNoDataFound: TextView? = null
-    override fun setLayout(): Int= R.layout.activity_categorybyproduct
+    override fun setLayout(): Int = R.layout.activity_categorybyproduct
 
     override fun InitView() {
         Common.getCurrentLanguage(this@CategoryByFoodActivity, false)
-        tvCategoryName.text=intent.getStringExtra("CategoryName")
-        foodList=ArrayList()
-        rvFoodData=findViewById(R.id.rvFoodData)
-        tvNoDataFound=findViewById(R.id.tvNoDataFound)
-        manager1= GridLayoutManager(this@CategoryByFoodActivity,2, GridLayoutManager.VERTICAL,false)
-        rvFoodData!!.layoutManager=manager1
+        tvCategoryName.text = intent.getStringExtra("CategoryName")
+        foodList = ArrayList()
+        rvFoodData = findViewById(R.id.rvFoodData)
+        tvNoDataFound = findViewById(R.id.tvNoDataFound)
+        manager1 = GridLayoutManager(this@CategoryByFoodActivity, 2, GridLayoutManager.VERTICAL, false)
+        rvFoodData!!.layoutManager = manager1
         ivBack.setOnClickListener {
-           finish()
+            finish()
         }
         if (Common.isCheckNetwork(this@CategoryByFoodActivity)) {
             callApiCategoryByFood(true)
         } else {
-            Common.alertErrorOrValidationDialog(this@CategoryByFoodActivity,resources.getString(R.string.no_internet))
+            Common.alertErrorOrValidationDialog(this@CategoryByFoodActivity, resources.getString(R.string.no_internet))
         }
 
-        if(getStringPref(this@CategoryByFoodActivity, SharePreference.SELECTED_LANGUAGE).equals(resources.getString(R.string.language_hindi))){
-            ivBack.rotation= 180F
-        }else{
-            ivBack.rotation= 0F
+        if (getStringPref(this@CategoryByFoodActivity, SharePreference.SELECTED_LANGUAGE).equals(resources.getString(R.string.language_hindi))) {
+            ivBack.rotation = 180F
+        } else {
+            ivBack.rotation = 0F
         }
 
 
@@ -75,8 +74,8 @@ class CategoryByFoodActivity:BaseActivity() {
         rvFoodData!!.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 if (dy > 0) {
-                    visibleItemCount = manager1!!.getChildCount()
-                    totalItemCount = manager1!!.getItemCount()
+                    visibleItemCount = manager1!!.childCount
+                    totalItemCount = manager1!!.itemCount
                     pastVisiblesItems = manager1!!.findFirstVisibleItemPosition()
                     if (CURRENT_PAGES < TOTAL_PAGES) {
                         if (visibleItemCount + pastVisiblesItems >= totalItemCount) {
@@ -99,7 +98,7 @@ class CategoryByFoodActivity:BaseActivity() {
         val map = HashMap<String, String>()
         map["cat_id"] = intent.getStringExtra("CategoryId")!!
         if (SharePreference.getBooleanPref(this@CategoryByFoodActivity, SharePreference.isLogin)) {
-            map["user_id"] = SharePreference.getStringPref(this@CategoryByFoodActivity, SharePreference.userId)!!
+            map["user_id"] = getStringPref(this@CategoryByFoodActivity, SharePreference.userId)!!
         }
         val call = ApiClient.getClient.getFoodItem(map, CURRENT_PAGES.toString())
         call.enqueue(object : Callback<RestResponse<FoodItemResponseModel>> {
@@ -112,16 +111,16 @@ class CategoryByFoodActivity:BaseActivity() {
                     if (restResponce.getStatus().equals("1")) {
                         Common.dismissLoadingProgress()
                         val foodItemResponseModel: FoodItemResponseModel = restResponce.getData()!!
-                        CURRENT_PAGES = foodItemResponseModel.getCurrent_page()!!.toInt()
-                        TOTAL_PAGES = foodItemResponseModel.getLast_page()!!.toInt()
-                        if(foodItemResponseModel.getData()!!.size>0){
-                            rvFoodData!!.visibility= View.VISIBLE
-                            tvNoDataFound!!.visibility= View.GONE
-                            foodList!!.addAll(foodItemResponseModel.getData()!!)
+                        CURRENT_PAGES = foodItemResponseModel.currentPage!!.toInt()
+                        TOTAL_PAGES = foodItemResponseModel.lastPage!!.toInt()
+                        if (foodItemResponseModel.data!!.size > 0) {
+                            rvFoodData!!.visibility = View.VISIBLE
+                            tvNoDataFound!!.visibility = View.GONE
+                            foodList!!.addAll(foodItemResponseModel.data)
                             setFoodAdaptor(isFirstTime!!)
-                        }else{
-                            rvFoodData!!.visibility= View.GONE
-                            tvNoDataFound!!.visibility= View.VISIBLE
+                        } else {
+                            rvFoodData!!.visibility = View.GONE
+                            tvNoDataFound!!.visibility = View.VISIBLE
                         }
 
                     } else if (restResponce.getMessage().equals("0")) {
@@ -143,9 +142,10 @@ class CategoryByFoodActivity:BaseActivity() {
             }
         })
     }
-    fun setFoodAdaptor(isFirstTime:Boolean) {
-        if(isFirstTime){
-            foodAdapter = object : BaseAdaptor<FoodItemModel>(this@CategoryByFoodActivity,foodList!!) {
+
+    fun setFoodAdaptor(isFirstTime: Boolean) {
+        if (isFirstTime) {
+            foodAdapter = object : BaseAdaptor<FoodItemModel>(this@CategoryByFoodActivity, foodList!!) {
                 @SuppressLint("NewApi")
                 override fun onBindData(
                         holder: RecyclerView.ViewHolder?,
@@ -156,35 +156,42 @@ class CategoryByFoodActivity:BaseActivity() {
                     val tvFoodPriceGrid: TextView = holder.itemView.findViewById(R.id.tvFoodPriceGrid)
                     val ivFood: ImageView = holder.itemView.findViewById(R.id.ivFood)
                     val icLike: ImageView = holder.itemView.findViewById(R.id.icLike)
-                    tvFoodName.text = foodList!!.get(position).getItem_name()
-                    tvFoodPriceGrid.text = Common.getCurrancy(this@CategoryByFoodActivity).plus(String.format(Locale.US,"%,.2f",foodList!!.get(position).getItem_price()!!.toDouble()))
-                    Glide.with(this@CategoryByFoodActivity).load(foodList!!.get(position).getItemimage()!!.getImage()).placeholder(ResourcesCompat.getDrawable(resources,R.drawable.placeholder,null)).into(ivFood)
-                    holder.itemView.setOnClickListener {
-                        startActivity(Intent(this@CategoryByFoodActivity, FoodDetailActivity::class.java).putExtra("foodItemId",foodList!!.get(position).getId()))
-                    }
-                    tvFoodPriceGrid.visibility= View.VISIBLE
+                    val tvFoodOnSale: TextView = holder.itemView.findViewById(R.id.tvFoodOnSale)
+                    if (foodList!![position].variation?.get(0)?.salePrice != 0) {
+                        tvFoodOnSale.visibility = View.VISIBLE
+                    } else {
+                        tvFoodOnSale.visibility = View.GONE
 
-                    if (foodList!![position].getIs_favorite().equals("0")) {
-                        icLike.setImageDrawable(ResourcesCompat.getDrawable(resources,R.drawable.ic_unlike,null))
+                    }
+                    tvFoodName.text = foodList!![position].itemName
+                    tvFoodPriceGrid.text = Common.getCurrancy(this@CategoryByFoodActivity).plus(String.format(Locale.US, "%,.2f",
+                            foodList!![position].variation?.get(0)?.productPrice!!.toDouble()))
+                    Glide.with(this@CategoryByFoodActivity).load(foodList!![position].itemimage!!.image).placeholder(ResourcesCompat.getDrawable(resources, R.drawable.ic_placeholder, null)).into(ivFood)
+                    holder.itemView.setOnClickListener {
+                        startActivity(Intent(this@CategoryByFoodActivity, FoodDetailActivity::class.java).putExtra("foodItemId",
+                                foodList!![position].id))
+                    }
+                    tvFoodPriceGrid.visibility = View.VISIBLE
+
+                    if (foodList!![position].isFavorite.equals("0")) {
+                        icLike.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.ic_unlike, null))
                         icLike.imageTintList = ColorStateList.valueOf(Color.WHITE)
                     } else {
-                        icLike.setImageDrawable(ResourcesCompat.getDrawable(resources,R.drawable.ic_favourite_like,null))
+                        icLike.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.ic_favourite_like, null))
                         icLike.imageTintList = ColorStateList.valueOf(Color.WHITE)
                     }
 
                     icLike.setOnClickListener {
                         if (SharePreference.getBooleanPref(this@CategoryByFoodActivity, SharePreference.isLogin)) {
-                            if (foodList!!.get(position).getIs_favorite().equals("0")) {
+                            if (foodList!![position].isFavorite.equals("0")) {
                                 val map = HashMap<String, String>()
-                                map["item_id"] = foodList!![position].getId()!!
+                                map["item_id"] = foodList!![position].id!!.toString()
                                 map["user_id"] = getStringPref(this@CategoryByFoodActivity, SharePreference.userId)!!
-                                if(Common.isCheckNetwork(this@CategoryByFoodActivity)){
-                                    callApiFavourite(map,position)
-                                }else{
+                                if (Common.isCheckNetwork(this@CategoryByFoodActivity)) {
+                                    callApiFavourite(map, position)
+                                } else {
                                     Common.alertErrorOrValidationDialog(
-                                            this@CategoryByFoodActivity,
-                                            resources.getString(R.string.no_internet)
-                                    )
+                                            this@CategoryByFoodActivity, resources.getString(R.string.no_internet))
                                 }
                             }
                         } else {
@@ -203,12 +210,12 @@ class CategoryByFoodActivity:BaseActivity() {
             rvFoodData!!.adapter = foodAdapter
             rvFoodData!!.itemAnimator = DefaultItemAnimator()
             rvFoodData!!.isNestedScrollingEnabled = true
-        }else{
+        } else {
             foodAdapter!!.notifyDataSetChanged()
         }
     }
 
-    private fun callApiFavourite(hasmap:HashMap<String, String>,pos:Int) {
+    private fun callApiFavourite(hasmap: HashMap<String, String>, pos: Int) {
         Common.showLoadingProgress(this@CategoryByFoodActivity)
         val call = ApiClient.getClient.setAddFavorite(hasmap)
         call.enqueue(object : Callback<SingleResponse> {
@@ -219,12 +226,12 @@ class CategoryByFoodActivity:BaseActivity() {
                         Common.dismissLoadingProgress()
                         foodList!!.removeAt(pos)
                         foodAdapter!!.notifyItemChanged(pos)
-                        if(foodList!!.size==0){
-                            rvFoodData!!.visibility= View.GONE
-                            tvNoDataFound!!.visibility= View.VISIBLE
-                        }else{
-                            rvFoodData!!.visibility= View.VISIBLE
-                            tvNoDataFound!!.visibility= View.GONE
+                        if (foodList!!.size == 0) {
+                            rvFoodData!!.visibility = View.GONE
+                            tvNoDataFound!!.visibility = View.VISIBLE
+                        } else {
+                            rvFoodData!!.visibility = View.VISIBLE
+                            tvNoDataFound!!.visibility = View.GONE
                         }
                     } else if (restResponse.getStatus().equals("0")) {
                         Common.dismissLoadingProgress()
@@ -235,6 +242,7 @@ class CategoryByFoodActivity:BaseActivity() {
                     }
                 }
             }
+
             override fun onFailure(call: Call<SingleResponse>, t: Throwable) {
                 Common.dismissLoadingProgress()
                 Common.alertErrorOrValidationDialog(

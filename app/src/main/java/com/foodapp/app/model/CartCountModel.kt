@@ -11,23 +11,11 @@ class CartCountModel {
         return message
     }
 
-    fun setMessage(message: String?) {
-        this.message = message
-    }
-
     fun getCart(): String? {
         return cart
     }
 
-    fun setCart(cart: String?) {
-        this.cart = cart
-    }
-
     fun getStatus(): String? {
         return status
-    }
-
-    fun setStatus(status: String?) {
-        this.status = status
     }
 }

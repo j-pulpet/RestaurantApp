@@ -30,7 +30,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/_10sdp"
             android:text="@string/otp_verifiy"
-            android:textColor="@color/light_orange"
+            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/_14ssp"
             tools:ignore="MissingPrefix" />
 
@@ -73,6 +73,7 @@
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_gravity="end"
             android:text="@string/resend_otp"
+            android:visibility="gone"
             android:textColor="@color/black"
             android:textSize="@dimen/_9ssp"
             tools:ignore="MissingPrefix" />
@@ -80,9 +81,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
             android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
             android:id="@+id/llOTP"
             android:gravity="center">
 
@@ -98,20 +99,21 @@
                 android:textSize="@dimen/_10ssp"
                 tools:ignore="MissingPrefix" />
 
-            <TextView
-                android:id="@+id/tvResendOtp"
-                fontPath="@string/font_bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_5sdp"
-                android:paddingTop="@dimen/_3sdp"
-                android:paddingBottom="@dimen/_3sdp"
-                android:text="@string/resend_otp"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_11ssp"
-                tools:ignore="MissingPrefix" />
-        </LinearLayout>
 
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tvResendOtp"
+            fontPath="@string/font_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:paddingTop="@dimen/_3sdp"
+            android:paddingBottom="@dimen/_3sdp"
+            android:text="@string/resend_otp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_11ssp"
+            android:layout_gravity="center"
+            tools:ignore="MissingPrefix" />
         <TextView
             android:id="@+id/tvCheckout"
             fontPath="@string/font_bold"
@@ -122,7 +124,7 @@
             android:layout_marginEnd="@dimen/_12sdp"
             android:layout_marginBottom="@dimen/_12sdp"
             android:background="@drawable/bg_corner_white_10"
-            android:backgroundTint="@color/light_orange"
+            android:backgroundTint="@color/colorPrimary"
             android:gravity="center"
             android:onClick="onClick"
             android:text="@string/otp_verification"

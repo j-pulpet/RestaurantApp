@@ -9,16 +9,7 @@ class SingleResponse {
         return message
     }
 
-    fun setMessage(message: String?) {
-        this.message = message
-    }
-
     fun getStatus(): String? {
         return status
     }
-
-    fun setStatus(status: String?) {
-        this.status = status
-    }
-
 }

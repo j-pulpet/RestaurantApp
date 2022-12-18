@@ -13,31 +13,15 @@ class PromocodeModel {
         return offer_amount
     }
 
-    fun setOffer_amount(offer_amount: String?) {
-        this.offer_amount = offer_amount
-    }
-
     fun getDescription(): String? {
         return description
-    }
-
-    fun setDescription(description: String?) {
-        this.description = description
     }
 
     fun getOffer_code(): String? {
         return offer_code
     }
 
-    fun setOffer_code(offer_code: String?) {
-        this.offer_code = offer_code
-    }
-
     fun getOffer_name(): String? {
         return offer_name
-    }
-
-    fun setOffer_name(offer_name: String?) {
-        this.offer_name = offer_name
     }
 }

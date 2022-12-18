@@ -39,7 +39,7 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14ssp"
                     tools:ignore="MissingPrefix"
-                    tools:text="Food Apps" />
+                    tools:text="@string/menu_name" />
             </LinearLayout>
 
 
@@ -324,7 +324,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_toEndOf="@+id/ic_wallet"
-                android:text="@string/my_wallet_menu"
+                android:text="@string/my_wallet"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_11ssp"
                 tools:ignore="RtlHardcoded,MissingPrefix" />

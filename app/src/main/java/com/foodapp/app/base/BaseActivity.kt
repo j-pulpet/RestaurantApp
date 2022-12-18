@@ -9,7 +9,7 @@ import com.foodapp.app.utils.Common
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper
 
 
-abstract class BaseActivity:AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

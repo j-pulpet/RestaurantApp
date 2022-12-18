@@ -17,6 +17,6 @@
         android:layout_height="@dimen/_30sdp"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/_10sdp"
-        android:progressDrawable="@color/light_orange"
+        android:progressDrawable="@color/colorPrimary"
         android:layout_alignParentBottom="true"/>
 </RelativeLayout>

@@ -13,16 +13,16 @@ import com.foodapp.app.utils.Common
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_imagepager.*
 
-class ImageSliderActivity:BaseActivity() {
-    var imgList:ArrayList<String>?=null
+class ImageSliderActivity : BaseActivity() {
+    var imgList: ArrayList<String>? = null
     override fun setLayout(): Int {
         return R.layout.activity_imagepager
     }
 
     override fun InitView() {
-        imgList=intent.getStringArrayListExtra("imageList")
-        val imageSlider=ImageSlider(this@ImageSliderActivity,imgList!!)
-        pager.adapter=imageSlider
+        imgList = intent.getStringArrayListExtra("imageList")
+        val imageSlider = ImageSlider(this@ImageSliderActivity, imgList!!)
+        pager.adapter = imageSlider
 
         ivCancle.setOnClickListener {
             finish()
@@ -44,8 +44,8 @@ class ImageSliderActivity:BaseActivity() {
             val itemView = inflater.inflate(R.layout.row_imageviewpager_item, view, false) as ViewGroup
             val mImageView = itemView.findViewById<View>(R.id.img_pager) as ImageView
             Glide.with(mContext).load(imageList.get(position))
-                .placeholder(R.drawable.ic_placeholder)
-                .into(mImageView)
+                    .placeholder(R.drawable.ic_placeholder)
+                    .into(mImageView)
 
             (view as ViewPager).addView(itemView)
             return itemView

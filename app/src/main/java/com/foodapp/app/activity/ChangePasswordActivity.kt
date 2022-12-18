@@ -19,7 +19,6 @@ import com.foodapp.app.utils.Common.showLoadingProgress
 import com.foodapp.app.utils.SharePreference
 import com.foodapp.app.api.*
 import com.foodapp.app.utils.Common
-import kotlinx.android.synthetic.main.activity_categorybyproduct.*
 import kotlinx.android.synthetic.main.activity_changepassword.*
 import kotlinx.android.synthetic.main.activity_changepassword.ivBack
 import org.json.JSONObject
@@ -28,20 +27,20 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.HashMap
 
-class ChangePasswordActivity:BaseActivity() {
+class ChangePasswordActivity : BaseActivity() {
     override fun setLayout(): Int {
         return R.layout.activity_changepassword
     }
 
     override fun InitView() {
         Common.getCurrentLanguage(this@ChangePasswordActivity, false)
-        if(SharePreference.getStringPref(
-                this@ChangePasswordActivity,
-                SharePreference.SELECTED_LANGUAGE
-            ).equals(resources.getString(R.string.language_hindi))){
-            ivBack.rotation= 180F
-        }else{
-            ivBack.rotation= 0F
+        if (SharePreference.getStringPref(
+                        this@ChangePasswordActivity,
+                        SharePreference.SELECTED_LANGUAGE
+                ).equals(resources.getString(R.string.language_hindi))) {
+            ivBack.rotation = 180F
+        } else {
+            ivBack.rotation = 0F
         }
     }
 
@@ -51,25 +50,24 @@ class ChangePasswordActivity:BaseActivity() {
                 finish()
             }
             R.id.tvSubmit -> {
-                if(edOldPass.text.toString().equals("")){
-                    Common.showErrorFullMsg(this@ChangePasswordActivity,resources.getString(R.string.validation_oldpassword))
-                }else if(edNewPassword.text.toString().equals("")){
-                    Common.showErrorFullMsg(this@ChangePasswordActivity,resources.getString(R.string.validation_password))
-                }else if(edNewPassword.text.toString().length<7){
-                    Common.showErrorFullMsg(this@ChangePasswordActivity,resources.getString(R.string.validation_valid_password))
-                }else if(edConfirmPassword.text.toString().equals("")){
-                    Common.showErrorFullMsg(this@ChangePasswordActivity,resources.getString(R.string.validation_cpassword))
-                }else if(!edConfirmPassword.text.toString().equals(edNewPassword.text.toString())){
-                    Common.showErrorFullMsg(this@ChangePasswordActivity,resources.getString(R.string.validation_valid_cpassword))
-                }else{
+                if (edOldPass.text.toString().equals("")) {
+                    Common.showErrorFullMsg(this@ChangePasswordActivity, resources.getString(R.string.validation_all))
+                } else if (edNewPassword.text.toString().equals("")) {
+                    Common.showErrorFullMsg(this@ChangePasswordActivity, resources.getString(R.string.validation_all))
+                } else if (edConfirmPassword.text.toString().equals("")) {
+                    Common.showErrorFullMsg(this@ChangePasswordActivity, resources.getString(R.string.validation_all))
+                } else if (!edConfirmPassword.text.toString().equals(edNewPassword.text.toString())) {
+                    Common.showErrorFullMsg(this@ChangePasswordActivity, resources.getString(R.string.validation_valid_cpassword))
+                } else {
                     val hasmap = HashMap<String, String>()
-                    hasmap.put("user_id", SharePreference.getStringPref(this@ChangePasswordActivity,SharePreference.userId)!!)
-                    hasmap.put("old_password", edOldPass.text.toString())
-                    hasmap.put("new_password", edNewPassword.text.toString())
-                    if(isCheckNetwork(this@ChangePasswordActivity)){
+                    hasmap["user_id"] =
+                            SharePreference.getStringPref(this@ChangePasswordActivity, SharePreference.userId)!!
+                    hasmap["old_password"] = edOldPass.text.toString()
+                    hasmap["new_password"] = edNewPassword.text.toString()
+                    if (isCheckNetwork(this@ChangePasswordActivity)) {
                         callApiChangepassword(hasmap)
-                    }else{
-                        alertErrorOrValidationDialog(this@ChangePasswordActivity,resources.getString(R.string.no_internet))
+                    } else {
+                        alertErrorOrValidationDialog(this@ChangePasswordActivity, resources.getString(R.string.no_internet))
                     }
                 }
             }
@@ -87,17 +85,17 @@ class ChangePasswordActivity:BaseActivity() {
                     if (restResponse.getStatus().equals("1")) {
                         dismissLoadingProgress()
                         successfulDialog(
-                            this@ChangePasswordActivity,
-                            restResponse.getMessage()
+                                this@ChangePasswordActivity,
+                                restResponse.getMessage()
                         )
                     }
-                }else{
+                } else {
                     val restResponse = response.errorBody()!!.string()
-                    val jsonObject=JSONObject(restResponse)
+                    val jsonObject = JSONObject(restResponse)
                     dismissLoadingProgress()
                     alertErrorOrValidationDialog(
-                        this@ChangePasswordActivity,
-                        jsonObject.getString("message")
+                            this@ChangePasswordActivity,
+                            jsonObject.getString("message")
                     )
                 }
             }
@@ -105,8 +103,8 @@ class ChangePasswordActivity:BaseActivity() {
             override fun onFailure(call: Call<SingleResponse>, t: Throwable) {
                 dismissLoadingProgress()
                 alertErrorOrValidationDialog(
-                    this@ChangePasswordActivity,
-                    resources.getString(R.string.error_msg)
+                        this@ChangePasswordActivity,
+                        resources.getString(R.string.error_msg)
                 )
             }
         })
@@ -117,13 +115,12 @@ class ChangePasswordActivity:BaseActivity() {
         try {
             if (dialog != null) {
                 dialog.dismiss()
-                dialog = null
             }
             dialog = Dialog(act, R.style.AppCompatAlertDialogStyleBig)
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
             dialog.window!!.setLayout(
-                WindowManager.LayoutParams.MATCH_PARENT,
-                WindowManager.LayoutParams.MATCH_PARENT
+                    WindowManager.LayoutParams.MATCH_PARENT,
+                    WindowManager.LayoutParams.MATCH_PARENT
             );
             dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             dialog.setCancelable(false)
@@ -144,6 +141,7 @@ class ChangePasswordActivity:BaseActivity() {
         }
 
     }
+
     override fun onResume() {
         super.onResume()
         Common.getCurrentLanguage(this@ChangePasswordActivity, false)

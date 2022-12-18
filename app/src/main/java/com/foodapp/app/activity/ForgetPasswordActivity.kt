@@ -20,16 +20,17 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.HashMap
 
-class ForgetPasswordActivity:BaseActivity() {
+class ForgetPasswordActivity : BaseActivity() {
     override fun setLayout(): Int {
         return R.layout.activity_forgetpassword
     }
+
     override fun InitView() {
         Common.getCurrentLanguage(this@ForgetPasswordActivity, false)
-        if(SharePreference.getStringPref(this@ForgetPasswordActivity, SharePreference.SELECTED_LANGUAGE).equals(resources.getString(R.string.language_hindi))){
-            ivBack.rotation= 180F
-        }else{
-            ivBack.rotation= 0F
+        if (SharePreference.getStringPref(this@ForgetPasswordActivity, SharePreference.SELECTED_LANGUAGE).equals(resources.getString(R.string.language_hindi))) {
+            ivBack.rotation = 180F
+        } else {
+            ivBack.rotation = 0F
         }
     }
 
@@ -39,24 +40,24 @@ class ForgetPasswordActivity:BaseActivity() {
                 onBackPressed()
             }
             R.id.tvSubmit -> {
-                if(edEmail.text.toString().equals("")){
-                    Common.showErrorFullMsg(this@ForgetPasswordActivity,resources.getString(R.string.validation_all))
-                }else if (!Common.isValidEmail(edEmail.text.toString())) {
-                    Common.showErrorFullMsg(this@ForgetPasswordActivity,resources.getString(R.string.validation_valid_email))
-                }else{
+                if (edEmail.text.toString().equals("")) {
+                    Common.showErrorFullMsg(this@ForgetPasswordActivity, resources.getString(R.string.validation_all))
+                } else if (!Common.isValidEmail(edEmail.text.toString())) {
+                    Common.showErrorFullMsg(this@ForgetPasswordActivity, resources.getString(R.string.validation_valid_email))
+                } else {
                     val hasmap = HashMap<String, String>()
-                    hasmap.put("email",edEmail.text.toString())
-                    if(Common.isCheckNetwork(this@ForgetPasswordActivity)){
+                    hasmap.put("email", edEmail.text.toString())
+                    if (Common.isCheckNetwork(this@ForgetPasswordActivity)) {
                         callApiForgetpassword(hasmap)
-                    }else{
+                    } else {
                         Common.alertErrorOrValidationDialog(
-                            this@ForgetPasswordActivity,
-                            resources.getString(R.string.no_internet)
+                                this@ForgetPasswordActivity,
+                                resources.getString(R.string.no_internet)
                         )
                     }
                 }
             }
-            R.id.tvSignup->{
+            R.id.tvSignup -> {
                 openActivity(RegistrationActivity::class.java)
                 finish()
                 finishAffinity()
@@ -70,23 +71,30 @@ class ForgetPasswordActivity:BaseActivity() {
         call.enqueue(object : Callback<SingleResponse> {
             override fun onResponse(call: Call<SingleResponse>, response: Response<SingleResponse>) {
                 if (response.code() == 200) {
+                    Common.dismissLoadingProgress()
                     val restResponse: SingleResponse = response.body()!!
                     if (restResponse.getStatus().equals("1")) {
-                        Common.dismissLoadingProgress()
+
                         successfulDialog(
-                            this@ForgetPasswordActivity,
-                            restResponse.getMessage()
+                                this@ForgetPasswordActivity,
+                                restResponse.getMessage()
                         )
                     }
-                }else{
+                    else {
+                        successfulDialog(
+                                this@ForgetPasswordActivity,
+                                restResponse.getMessage()
+                        )
+                    }
+                } else {
                     Common.dismissLoadingProgress()
-                    Common.showErrorFullMsg(this@ForgetPasswordActivity,resources.getString(R.string.error_msg))
+                    Common.showErrorFullMsg(this@ForgetPasswordActivity, resources.getString(R.string.error_msg))
                 }
             }
 
             override fun onFailure(call: Call<SingleResponse>, t: Throwable) {
                 Common.dismissLoadingProgress()
-                Common.showErrorFullMsg(this@ForgetPasswordActivity,resources.getString(R.string.error_msg))
+                Common.showErrorFullMsg(this@ForgetPasswordActivity, resources.getString(R.string.error_msg))
             }
         })
     }
@@ -94,28 +102,27 @@ class ForgetPasswordActivity:BaseActivity() {
     fun successfulDialog(act: Activity, msg: String?) {
         var dialog: Dialog? = null
         try {
-            if (dialog != null) {
-                dialog.dismiss()
-            }
+
+            dialog?.dismiss()
             dialog = Dialog(act, R.style.AppCompatAlertDialogStyleBig)
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
             dialog.window!!.setLayout(
-                WindowManager.LayoutParams.MATCH_PARENT,
-                WindowManager.LayoutParams.MATCH_PARENT
+                    WindowManager.LayoutParams.MATCH_PARENT,
+                    WindowManager.LayoutParams.MATCH_PARENT
             );
             dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             dialog.setCancelable(false)
-            val m_inflater = LayoutInflater.from(act)
-            val m_view = m_inflater.inflate(R.layout.dlg_validation, null, false)
-            val textDesc: TextView = m_view.findViewById(R.id.tvMessage)
+            val mInflater = LayoutInflater.from(act)
+            val mView = mInflater.inflate(R.layout.dlg_validation, null, false)
+            val textDesc: TextView = mView.findViewById(R.id.tvMessage)
             textDesc.text = msg
-            val tvOk: TextView = m_view.findViewById(R.id.tvOk)
+            val tvOk: TextView = mView.findViewById(R.id.tvOk)
             val finalDialog: Dialog = dialog
             tvOk.setOnClickListener {
                 finalDialog.dismiss()
                 finish()
             }
-            dialog.setContentView(m_view)
+            dialog.setContentView(mView)
             dialog.show()
         } catch (e: java.lang.Exception) {
             e.printStackTrace()

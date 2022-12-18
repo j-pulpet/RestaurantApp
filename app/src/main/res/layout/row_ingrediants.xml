@@ -10,5 +10,5 @@
         android:layout_margin="@dimen/_5sdp"
         app:riv_corner_radius="5dp"
         android:id="@+id/ivIngrediants"
-        android:src="@drawable/placeholder"/>
+        android:src="@drawable/ic_placeholder"/>
 </RelativeLayout>

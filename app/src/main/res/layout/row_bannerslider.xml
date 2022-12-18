@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <View
-        android:layout_width="5dp"
-        android:layout_height="match_parent"
-        android:id="@+id/view1"/>
+
     <com.makeramen.roundedimageview.RoundedImageView
-        android:layout_width="@dimen/_230sdp"
-        android:layout_height="@dimen/_120sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_140sdp"
         app:riv_corner_radius="@dimen/_5sdp"
-        android:layout_margin="@dimen/_5sdp"
         android:id="@+id/ivBannereSlider"
         android:scaleType="fitXY"
-        android:src="@drawable/placeholder"/>
+        android:src="@drawable/ic_placeholder"/>
 </LinearLayout>

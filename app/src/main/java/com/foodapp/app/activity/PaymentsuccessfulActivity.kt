@@ -4,7 +4,7 @@ import com.foodapp.app.R
 import com.foodapp.app.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_successpayment.*
 
-class PaymentsuccessfulActivity:BaseActivity() {
+class PaymentsuccessfulActivity : BaseActivity() {
     override fun setLayout(): Int = R.layout.activity_successpayment
 
     override fun InitView() {

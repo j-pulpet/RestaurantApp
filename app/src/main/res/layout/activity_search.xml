@@ -17,13 +17,13 @@
             android:layout_width="@dimen/_35sdp"
             android:layout_height="@dimen/_35sdp"
             android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/_minus1sdp"
+            android:layout_marginStart="@dimen/_4sdp"
             android:onClick="onClick"
             android:padding="@dimen/_5sdp"
             android:src="@drawable/ic_back" />
 
         <TextView
-            fontPath="@string/font_bold"
+            fontPath="@string/font_thin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -55,7 +55,7 @@
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
             android:gravity="start|center_vertical"
-            android:hint="@string/search_here"
+            android:hint="@string/search"
             android:imeOptions="actionSearch"
 
             android:inputType="textPersonName"
@@ -83,5 +83,8 @@
         android:layout_height="match_parent"
         android:layout_marginHorizontal="@dimen/_5sdp"
         android:layout_marginTop="@dimen/_5sdp"
+        android:paddingBottom="20dp"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
         android:visibility="gone" />
 </LinearLayout>

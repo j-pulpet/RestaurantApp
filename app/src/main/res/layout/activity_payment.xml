@@ -16,7 +16,7 @@
             android:layout_width="@dimen/_35sdp"
             android:layout_height="@dimen/_35sdp"
             android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/_minus1sdp"
+            android:layout_marginStart="@dimen/_4sdp"
             android:onClick="onClick"
             android:padding="@dimen/_5sdp"
             android:src="@drawable/ic_back" />
@@ -33,7 +33,7 @@
     </RelativeLayout>
     <TextView
         android:id="@+id/tvTitleOrderSummery"
-        fontPath="@string/font_medium"
+        fontPath="@string/font_thin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/rlTitle"
@@ -41,7 +41,7 @@
         android:layout_marginTop="@dimen/_7sdp"
         android:text="@string/select_payment_method"
         android:textColor="@color/black"
-        android:textSize="@dimen/_12ssp"
+        android:textSize="@dimen/_14ssp"
         tools:ignore="MissingPrefix" />
 
     <TextView
@@ -70,17 +70,17 @@
         android:id="@+id/tvPaynow"
         fontPath="@string/font_bold"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_35sdp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginHorizontal="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginBottom="@dimen/_10sdp"
         android:background="@drawable/bg_editfield"
-        android:backgroundTint="@color/light_orange"
+        android:backgroundTint="@color/colorPrimary"
         android:gravity="center_horizontal"
         android:padding="@dimen/_10sdp"
-        android:text="Order now"
+        android:text="@string/order_now"
         android:textColor="@color/white"
         android:textSize="@dimen/_12ssp"
         tools:ignore="MissingPrefix" />

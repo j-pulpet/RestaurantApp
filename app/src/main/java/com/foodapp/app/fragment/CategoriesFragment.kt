@@ -24,16 +24,16 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class CategoriesFragment: BaseFragmnet() {
+class CategoriesFragment : BaseFragmnet() {
     override fun setView(): Int = R.layout.fragment_category
     override fun Init(view: View) {
         ivMenu.setOnClickListener {
             (activity as DashboardActivity?)!!.onDrawerToggle()
         }
         if (Common.isCheckNetwork(activity!!)) {
-          callApiCategoryFood()
+            callApiCategoryFood()
         } else {
-          Common.alertErrorOrValidationDialog(activity!!, resources.getString(R.string.no_internet))
+            Common.alertErrorOrValidationDialog(activity!!, resources.getString(R.string.no_internet))
         }
     }
 
@@ -49,25 +49,25 @@ class CategoriesFragment: BaseFragmnet() {
                 if (response.code() == 200) {
                     Common.dismissLoadingProgress()
                     val restResponce: ListResponse<FoodCategoryModel> = response.body()!!
-                    if (restResponce.status==1) {
+                    if (restResponce.status == 1) {
                         if (restResponce.data!!.size > 0) {
                             if (isAdded) {
-                               tvNoDataFound.visibility=View.GONE
-                               rvFoodCategory.visibility=View.VISIBLE
+                                tvNoDataFound.visibility = View.GONE
+                                rvFoodCategory.visibility = View.VISIBLE
                             }
                             setFoodCategoryAdaptor(restResponce.data!!)
-                        }else{
+                        } else {
                             if (isAdded) {
-                                tvNoDataFound.visibility=View.VISIBLE
-                                rvFoodCategory.visibility=View.GONE
+                                tvNoDataFound.visibility = View.VISIBLE
+                                rvFoodCategory.visibility = View.GONE
                             }
                         }
-                    } else if (restResponce.status==0) {
+                    } else if (restResponce.status == 0) {
                         Common.dismissLoadingProgress()
                         Common.alertErrorOrValidationDialog(activity!!, restResponce.message)
                         if (isAdded) {
-                            tvNoDataFound.visibility=View.VISIBLE
-                            rvFoodCategory.visibility=View.GONE
+                            tvNoDataFound.visibility = View.VISIBLE
+                            rvFoodCategory.visibility = View.GONE
                         }
                     }
                 }
@@ -83,8 +83,8 @@ class CategoriesFragment: BaseFragmnet() {
         })
     }
 
-    fun setFoodCategoryAdaptor(foodCategoryList:ArrayList<FoodCategoryModel>) {
-       val foodCategoryAdapter = object : BaseAdaptor<FoodCategoryModel>(activity!!,foodCategoryList) {
+    fun setFoodCategoryAdaptor(foodCategoryList: ArrayList<FoodCategoryModel>) {
+        val foodCategoryAdapter = object : BaseAdaptor<FoodCategoryModel>(activity!!, foodCategoryList) {
             @SuppressLint("ResourceType")
             override fun onBindData(
                     holder: RecyclerView.ViewHolder?,
@@ -95,9 +95,9 @@ class CategoriesFragment: BaseFragmnet() {
                 val ivFoodCategory: ImageView = holder.itemView.findViewById(R.id.ivFoodCategory)
 
                 tvFoodCategoryName.text = foodCategoryList[position].getCategory_name()
-                Glide.with(activity!!).load(foodCategoryList[position].getImage()).placeholder(ResourcesCompat.getDrawable(resources,R.drawable.placeholder,null)).into(ivFoodCategory)
+                Glide.with(activity!!).load(foodCategoryList[position].getImage()).placeholder(ResourcesCompat.getDrawable(resources, R.drawable.ic_placeholder, null)).into(ivFoodCategory)
                 holder.itemView.setOnClickListener {
-                    startActivity(Intent(activity!!,CategoryByFoodActivity::class.java).putExtra("CategoryName",foodCategoryList[position].getCategory_name()).putExtra("CategoryId",foodCategoryList[position].getId()))
+                    startActivity(Intent(activity!!, CategoryByFoodActivity::class.java).putExtra("CategoryName", foodCategoryList[position].getCategory_name()).putExtra("CategoryId", foodCategoryList[position].getId()))
                 }
             }
 
@@ -109,7 +109,7 @@ class CategoriesFragment: BaseFragmnet() {
         if (isAdded) {
             rvFoodCategory.apply {
                 adapter = foodCategoryAdapter
-                layoutManager = GridLayoutManager(activity!!,2,GridLayoutManager.VERTICAL,false)
+                layoutManager = GridLayoutManager(activity!!, 3, GridLayoutManager.VERTICAL, false)
                 itemAnimator = DefaultItemAnimator()
                 isNestedScrollingEnabled = true
             }

@@ -12,11 +12,12 @@
         android:layout_height="?actionBarSize">
         <ImageView
             android:id="@+id/ivMenu"
-            android:layout_width="@dimen/_45sdp"
+            android:layout_width="@dimen/_38sdp"
             android:layout_height="match_parent"
-            android:padding="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_7sdp"
+            android:padding="@dimen/_8sdp"
             android:src="@drawable/ic_nevigation"
-           />
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,7 +25,7 @@
             android:textSize="@dimen/_14ssp"
             android:layout_centerInParent="true"
             fontPath="@string/font_thin"
-            android:text="@string/order_history"
+            android:text="@string/my_orders"
             tools:ignore="MissingPrefix" />
     </RelativeLayout>
 

@@ -16,7 +16,7 @@
             android:layout_marginStart="@dimen/_7sdp"
             android:padding="@dimen/_8sdp"
             android:src="@drawable/ic_nevigation"
-           />
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -46,8 +46,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/_5sdp"
-            android:layout_marginRight="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
             tools:listitem="@layout/row_foodsubcategory"
             android:id="@+id/rvFavourite"/>
     </LinearLayout>

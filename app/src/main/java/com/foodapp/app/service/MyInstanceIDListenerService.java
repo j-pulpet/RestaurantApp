@@ -37,10 +37,10 @@ public class MyInstanceIDListenerService extends FirebaseMessagingService {
         super.onMessageReceived(remoteMessage);
         try {
             Log.e("getData", new Gson().toJson(remoteMessage.toString()));
-            JSONObject object =new JSONObject(new Gson().toJson(remoteMessage.getNotification()));
-            Log.e("isPeram",object.toString());
-            String title =object.getString("title");
-            String message =object.getString("body");
+            JSONObject object = new JSONObject(new Gson().toJson(remoteMessage.getNotification()));
+            Log.e("isPeram", object.toString());
+            String title = object.getString("title");
+            String message = object.getString("body");
             showNotifications(getString(R.string.app_name), title, message);
         } catch (JSONException e) {
             e.printStackTrace();

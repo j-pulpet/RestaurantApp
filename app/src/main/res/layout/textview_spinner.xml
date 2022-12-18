@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    fontPath="@string/font_regular"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/_15sdp"
+    android:paddingTop="@dimen/_10sdp"
+    android:paddingRight="@dimen/_15sdp"
+    android:paddingBottom="@dimen/_10sdp"
+    android:textSize="@dimen/_12ssp"
+    android:textColor="@color/black"
+    tools:ignore="MissingPrefix">
+
+</TextView>

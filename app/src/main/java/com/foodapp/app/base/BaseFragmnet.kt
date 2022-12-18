@@ -11,11 +11,11 @@ import com.foodapp.app.utils.Common
 abstract class BaseFragmnet : Fragment() {
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(setView(),container,false)
+        return inflater.inflate(setView(), container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -29,6 +29,7 @@ abstract class BaseFragmnet : Fragment() {
     open fun openActivity(destinationClass: Class<*>?) {
         startActivity(Intent(activity, destinationClass))
     }
+
     override fun onResume() {
         super.onResume()
         Common.getCurrentLanguage(activity!!, false)

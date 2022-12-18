@@ -24,7 +24,7 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:gravity="center_horizontal">
             <TextView
-                fontPath="@string/font_mark_web_thin"
+                fontPath="@string/font_thin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -52,7 +52,7 @@
 
         <TextView
             style="@style/logout_button"
-            android:text="@string/o_k"
+            android:text="@string/okay"
             android:layout_marginTop="@dimen/_5sdp"
             android:gravity="center"
             android:layout_gravity="center"

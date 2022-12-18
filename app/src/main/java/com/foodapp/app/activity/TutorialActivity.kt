@@ -17,29 +17,28 @@ import com.foodapp.app.utils.SharePreference.Companion.isTutorial
 import com.foodapp.app.utils.SharePreference.Companion.setBooleanPref
 import kotlinx.android.synthetic.main.activity_tutorial.*
 
-class TutorialActivity:BaseActivity(){
-    var imagelist:ArrayList<Drawable>?=null
+class TutorialActivity : BaseActivity() {
+    var imagelist: ArrayList<Drawable>? = null
     override fun setLayout(): Int {
         return R.layout.activity_tutorial
     }
 
     override fun InitView() {
         Common.getCurrentLanguage(this@TutorialActivity, false)
-        setBooleanPref(this@TutorialActivity, isTutorial,true)
         imagelist = ArrayList()
-        imagelist!!.add(ResourcesCompat.getDrawable(resources,R.drawable.ic_pageone,null)!!)
-        imagelist!!.add(ResourcesCompat.getDrawable(resources,R.drawable.ic_pagethree,null)!!)
-        imagelist!!.add(ResourcesCompat.getDrawable(resources,R.drawable.ic_pagetwo,null)!!)
-        viewPager.adapter=StartScreenAdapter(this@TutorialActivity,imagelist!!)
+        imagelist!!.add(ResourcesCompat.getDrawable(resources, R.drawable.ic_pageone, null)!!)
+        imagelist!!.add(ResourcesCompat.getDrawable(resources, R.drawable.ic_pagetwo, null)!!)
+        imagelist!!.add(ResourcesCompat.getDrawable(resources, R.drawable.ic_pagethree, null)!!)
+        viewPager.adapter = StartScreenAdapter(this@TutorialActivity, imagelist!!)
         tabLayout.setupWithViewPager(viewPager, true)
 
         viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(i: Int, v: Float, i1: Int) {}
             override fun onPageSelected(i: Int) {
                 if (i == imagelist!!.size - 1) {
-                    tvBtnSkip.text="Start"
-                }else{
-                    tvBtnSkip.text="Skip"
+                    tvBtnSkip.text = resources.getString(R.string.start_)
+                } else {
+                    tvBtnSkip.text = resources.getString(R.string.skip)
                 }
             }
 
@@ -47,6 +46,7 @@ class TutorialActivity:BaseActivity(){
         })
 
         tvBtnSkip.setOnClickListener {
+            setBooleanPref(this@TutorialActivity, isTutorial, true)
             openActivity(DashboardActivity::class.java)
             finish()
         }
@@ -64,9 +64,9 @@ class TutorialActivity:BaseActivity(){
         }
 
         override fun destroyItem(
-            collection: ViewGroup,
-            position: Int,
-            view: Any
+                collection: ViewGroup,
+                position: Int,
+                view: Any
         ) {
             collection.removeView(view as View)
         }

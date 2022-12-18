@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_gravity="center"
-                android:text="tootl"
+                tools:text="-"
                 android:maxLines="1"
                 android:textAlignment="viewStart"
                 android:gravity="start"

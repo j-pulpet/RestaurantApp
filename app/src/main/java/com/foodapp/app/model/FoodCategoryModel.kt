@@ -13,16 +13,8 @@ class FoodCategoryModel {
         return image
     }
 
-    fun setImage(image: String?) {
-        this.image = image
-    }
-
     fun getCategory_name(): String? {
         return category_name
-    }
-
-    fun setCategory_name(category_name: String?) {
-        this.category_name = category_name
     }
 
     fun getId(): String? {

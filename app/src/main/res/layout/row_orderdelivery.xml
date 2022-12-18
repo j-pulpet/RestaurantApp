@@ -48,7 +48,7 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/_10ssp"
                     tools:ignore="MissingPrefix"
-                    tools:text="S7KQ0F92LO" />
+                    tools:text="-" />
 
                 <TextView
                     android:id="@+id/tvOrderDate"
@@ -60,7 +60,7 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/_10ssp"
                     tools:ignore="MissingPrefix"
-                    tools:text="17/07/2020" />
+                    tools:text="-" />
 
             </RelativeLayout>
 
@@ -96,7 +96,7 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/_10ssp"
                     tools:ignore="MissingPrefix"
-                    tools:text="S7KQ0F92LO" />
+                    tools:text="-" />
 
                 <TextView
                     android:id="@+id/tvPaymentType"
@@ -106,7 +106,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:text="@string/cod"
+                    android:text="-"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_10ssp"
                     tools:ignore="MissingPrefix" />
@@ -141,11 +141,11 @@
                     android:layout_marginStart="@dimen/_5sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_toEndOf="@id/tvDelivery"
-                    android:textColor="@color/light_orange"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/_10ssp"
                     android:visibility="visible"
                     tools:ignore="MissingPrefix"
-                    tools:text="test" />
+                    tools:text="-" />
 
             </RelativeLayout>
 
@@ -159,10 +159,10 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginHorizontal="@dimen/_10sdp"
                 android:layout_marginVertical="@dimen/_3sdp"
-                android:textColor="@color/light_orange"
+                android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/_12ssp"
                 tools:ignore="MissingPrefix"
-                tools:text="$80" />
+                tools:text="-" />
 
             <LinearLayout
                 android:id="@+id/llView"
@@ -251,8 +251,8 @@
                     android:layout_height="@dimen/_20sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:gravity="center_vertical"
-                    android:text="@string/order_place1"
-                    android:textColor="@color/light_orange"
+                    android:text="@string/order_place"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/_11ssp"
                     tools:ignore="MissingPrefix" />
 
@@ -269,8 +269,8 @@
                     android:layout_height="@dimen/_20sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:gravity="center_vertical"
-                    android:text="@string/order_ready1"
-                    android:textColor="@color/light_orange"
+                    android:text="@string/order_ready"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/_11ssp"
                     tools:ignore="MissingPrefix" />
 
@@ -287,9 +287,9 @@
                     android:layout_height="@dimen/_20sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:gravity="center_vertical"
-                    android:text="@string/on_the_way1"
+                    android:text="@string/on_the_way"
 
-                    android:textColor="@color/light_orange"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/_11ssp"
                     tools:ignore="MissingPrefix" />
 
@@ -307,12 +307,11 @@
                     android:layout_height="@dimen/_20sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:gravity="center_vertical"
-                    android:text="@string/order_delivered1"
-                    android:textColor="@color/light_orange"
+                    android:text="@string/order_delivered"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/_11ssp"
                     tools:ignore="MissingPrefix" />
             </LinearLayout>
-
             <ImageView
                 android:id="@+id/ivArrow"
                 android:layout_width="@dimen/_25sdp"

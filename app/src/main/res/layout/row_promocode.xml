@@ -32,8 +32,8 @@
                     android:layout_marginStart="@dimen/_8sdp"
                     android:layout_gravity="center"
                     android:layout_centerVertical="true"
-                    tools:text="ORDER NUMBER  "
-                    android:textColor="@color/light_orange"
+                    tools:text="-"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/_10ssp"
                     tools:ignore="MissingPrefix" />
                 <TextView
@@ -41,8 +41,8 @@
                     fontPath="@string/font_medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
                     android:paddingTop="@dimen/_3sdp"
                     android:paddingBottom="@dimen/_3sdp"
                     android:paddingStart="@dimen/_10sdp"
@@ -67,7 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
-                    tools:text="S7KQ0F92LO"
+                    tools:text="-"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_10ssp"
                     tools:ignore="MissingPrefix" />
@@ -81,12 +81,12 @@
                 <TextView
                     android:id="@+id/tvPromocodeDescription"
                     fontPath="@string/font_medium"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_8sdp"
-                    android:layout_marginRight="@dimen/_8sdp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
                     android:layout_gravity="center"
-                    tools:text="DELIVERY ADDRESS: "
+                    tools:text="-"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/_10ssp"
                     tools:ignore="MissingPrefix" />

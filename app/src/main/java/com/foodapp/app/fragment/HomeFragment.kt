@@ -4,17 +4,17 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.os.Build
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.NestedScrollView
-import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.*
 import com.foodapp.app.R
 import com.foodapp.app.activity.*
 import com.foodapp.app.api.ApiClient
@@ -28,7 +28,6 @@ import com.foodapp.app.utils.Common
 import com.foodapp.app.utils.Common.alertErrorOrValidationDialog
 import com.foodapp.app.utils.Common.callApiLocation
 import com.foodapp.app.utils.Common.dismissLoadingProgress
-import com.foodapp.app.utils.Common.getCurrancy
 import com.foodapp.app.utils.Common.isCheckNetwork
 import com.foodapp.app.utils.Common.showLoadingProgress
 import com.foodapp.app.utils.SharePreference
@@ -41,7 +40,7 @@ import com.foodapp.app.utils.SharePreference.Companion.isMiniMum
 import com.foodapp.app.utils.SharePreference.Companion.isMiniMumQty
 import com.foodapp.app.utils.SharePreference.Companion.mapKey
 import com.foodapp.app.utils.SharePreference.Companion.userRefralAmount
-import kotlinx.android.synthetic.main.fragment_favourite.*
+import kotlinx.android.synthetic.main.activity_foodorderdetail.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.ivCart
 import kotlinx.android.synthetic.main.fragment_home.ivMenu
@@ -59,8 +58,8 @@ class HomeFragment : BaseFragmnet() {
     var foodCategoryAdapter: BaseAdaptor<FoodCategoryModel>? = null
     private var foodCategoryList: ArrayList<FoodCategoryModel>? = null
     var bannerList: ArrayList<BannerModel>? = null
-    var foodAdapter: BaseAdaptor<FoodItemModel>? = null
     var bannerAdapter: BaseAdaptor<BannerModel>? = null
+    var foodAdapter: BaseAdaptor<FoodItemModel>? = null
     private var foodList: ArrayList<FoodItemModel>? = null
     var foodCategoryId = "";
     var manager1: GridLayoutManager? = null
@@ -69,74 +68,109 @@ class HomeFragment : BaseFragmnet() {
     var isLoding: Boolean = true
     var scrollView: NestedScrollView? = null
     var rlCount: RelativeLayout? = null
+    var pos = 0
     var tvCount: TextView? = null
+    var bannerDatalist=ArrayList<BannerModel>()
+//    var timer: Timer? = null
     override fun setView(): Int {
         return R.layout.fragment_home
     }
 
     override fun Init(view: View) {
-        Common.getCurrentLanguage(activity!!, false)
+        Common.getCurrentLanguage(requireActivity(), false)
         foodList = ArrayList()
         scrollView = view.findViewById(R.id.scrollView)
         rlCount = view.findViewById(R.id.rlCount)
         tvCount = view.findViewById(R.id.tvCount)
 
-        if (SharePreference.getBooleanPref(activity!!, isLinearLayoutManager)) {
+        if (SharePreference.getBooleanPref(requireActivity(), isLinearLayoutManager)) {
             manager1 = GridLayoutManager(activity, 1, GridLayoutManager.VERTICAL, false)
-            ic_grid.setImageDrawable(ResourcesCompat.getDrawable(resources,R.drawable.ic_listitem,null))
+            ic_grid?.setImageDrawable(
+                ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.ic_listitem,
+                    null
+                )
+            )
         } else {
             manager1 = GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false)
-            ic_grid.setImageDrawable(ResourcesCompat.getDrawable(resources,R.drawable.ic_grid,null))
+            ic_grid?.setImageDrawable(
+                ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.ic_grid,
+                    null
+                )
+            )
         }
 
-        rvFoodSubcategory.layoutManager = manager1
+        rvFoodSubcategory?.layoutManager = manager1
 
-        if (isCheckNetwork(activity!!)) {
+        if (isCheckNetwork(requireActivity())) {
             callApiBanner()
         } else {
-            alertErrorOrValidationDialog(activity!!, resources.getString(R.string.no_internet))
+            alertErrorOrValidationDialog(
+                requireActivity(),
+                resources.getString(R.string.no_internet)
+            )
         }
 
-        ivMenu.setOnClickListener {
-            (activity as DashboardActivity?)!!.onDrawerToggle()
+        ivMenu?.setOnClickListener {
+            (activity as DashboardActivity?)?.onDrawerToggle()
         }
         ivCart.setOnClickListener {
-            if (SharePreference.getBooleanPref(activity!!, SharePreference.isLogin)) {
+            if (SharePreference.getBooleanPref(requireActivity(), SharePreference.isLogin)) {
                 openActivity(CartActivity::class.java)
-            }else{
+            } else {
                 openActivity(LoginActivity::class.java)
-                activity!!.finish()
-                activity!!.finishAffinity()
+                requireActivity().finish()
+                requireActivity().finishAffinity()
             }
         }
         ivSearch.setOnClickListener {
             openActivity(SearchActivity::class.java)
-            activity!!.finish()
+            requireActivity().finish()
         }
 
         ic_grid.setOnClickListener {
-            if (SharePreference.getBooleanPref(activity!!, isLinearLayoutManager)) {
+            if (SharePreference.getBooleanPref(requireActivity(), isLinearLayoutManager)) {
                 manager1 = GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false)
                 SharePreference.setBooleanPref(activity!!, isLinearLayoutManager, false)
-                ic_grid.setImageDrawable(ResourcesCompat.getDrawable(resources,R.drawable.ic_grid,null))
+                ic_grid.setImageDrawable(
+                    ResourcesCompat.getDrawable(
+                        resources,
+                        R.drawable.ic_grid,
+                        null
+                    )
+                )
             } else {
                 manager1 = GridLayoutManager(activity, 1, GridLayoutManager.VERTICAL, false)
                 SharePreference.setBooleanPref(activity!!, isLinearLayoutManager, true)
-                ic_grid.setImageDrawable(ResourcesCompat.getDrawable(resources,R.drawable.ic_listitem,null))
+                ic_grid.setImageDrawable(
+                    ResourcesCompat.getDrawable(
+                        resources,
+                        R.drawable.ic_listitem,
+                        null
+                    )
+                )
             }
             rvFoodSubcategory.layoutManager = manager1
         }
 
         if (isAdded) {
             scrollView!!.viewTreeObserver.addOnScrollChangedListener {
-                val view1 = scrollView!!.getChildAt(scrollView!!.getChildCount() - 1) as View
+                val view1 = scrollView!!.getChildAt(scrollView!!.childCount - 1) as View
                 val diff: Int =
-                    view1.bottom - (scrollView!!.getHeight() + scrollView!!.getScrollY())
+                    view1.bottom - (scrollView!!.height + scrollView!!.scrollY)
                 if (diff == 0 && CurrentPageNo < TOTAL_PAGES) {
                     isLoding = false
                     CurrentPageNo += 1
                     if (isCheckNetwork(activity!!)) {
-                        callApiFood(foodCategoryId, false, false, false)
+                        callApiFood(
+                            foodCategoryId,
+                            isFirstTime = false,
+                            isSelect = false,
+                            isFristTimeSelect = false
+                        )
                     } else {
                         alertErrorOrValidationDialog(
                             activity!!,
@@ -149,7 +183,7 @@ class HomeFragment : BaseFragmnet() {
 
         ivLocation.setOnClickListener {
             if (isCheckNetwork(activity!!)) {
-               callApiLocation(activity!!)
+                callApiLocation(activity!!)
             } else {
                 alertErrorOrValidationDialog(
                     activity!!,
@@ -159,24 +193,35 @@ class HomeFragment : BaseFragmnet() {
         }
 
         swiperefresh.setOnRefreshListener { // Your code to refresh the list here.
-            if(isCheckNetwork(activity!!)){
-                swiperefresh.isRefreshing=false
+            if (isCheckNetwork(activity!!)) {
+                swiperefresh.isRefreshing = false
                 foodList!!.clear()
                 isLoding = true
                 CurrentPageNo = 1
+                pos=0
+                timer?.cancel()
                 TOTAL_PAGES = 0
+
                 if (isCheckNetwork(activity!!)) {
+                bannerList?.clear()
                     callApiBanner()
                 } else {
-                    alertErrorOrValidationDialog(activity!!,resources.getString(R.string.no_internet))
+                    alertErrorOrValidationDialog(
+                        activity!!,
+                        resources.getString(R.string.no_internet)
+                    )
                 }
-            }else{
+            } else {
                 alertErrorOrValidationDialog(
                     activity!!,
                     resources.getString(R.string.no_internet)
                 )
             }
         }
+
+
+
+
     }
 
 
@@ -190,14 +235,15 @@ class HomeFragment : BaseFragmnet() {
             ) {
                 if (response.code() == 200) {
                     val restResponce: ListResponse<BannerModel> = response.body()!!
-                    if (restResponce.status==1) {
+                    if (restResponce.status == 1) {
                         if (restResponce.data!!.size > 0) {
                             bannerList = restResponce.data
+                            bannerDatalist.addAll(restResponce.data!!)
                             callApiCategoryFood()
                         } else {
                             callApiCategoryFood()
                         }
-                    } else if (restResponce.status==0) {
+                    } else if (restResponce.status == 0) {
                         callApiCategoryFood()
                     }
                 } else {
@@ -215,6 +261,7 @@ class HomeFragment : BaseFragmnet() {
         })
     }
 
+
     private fun callApiCategoryFood() {
         val call = ApiClient.getClient.getFoodCategory()
         call.enqueue(object : Callback<ListResponse<FoodCategoryModel>> {
@@ -224,14 +271,19 @@ class HomeFragment : BaseFragmnet() {
             ) {
                 if (response.code() == 200) {
                     val restResponce: ListResponse<FoodCategoryModel> = response.body()!!
-                    if (restResponce.status==1) {
+                    if (restResponce.status == 1) {
                         if (restResponce.data!!.size > 0) {
                             foodCategoryList = restResponce.data!!
-                            foodCategoryId = foodCategoryList!!.get(0).getId()!!
-                            foodCategoryList!!.get(0).setSelect(true)
-                            callApiFood(foodCategoryId, true, false, true)
+                            foodCategoryId = foodCategoryList!![0].getId()!!
+                            foodCategoryList!![0].setSelect(true)
+                            callApiFood(
+                                foodCategoryId,
+                                isFirstTime = true,
+                                isSelect = false,
+                                isFristTimeSelect = true
+                            )
                         }
-                    } else if (restResponce.status==0) {
+                    } else if (restResponce.status == 0) {
                         dismissLoadingProgress()
                         alertErrorOrValidationDialog(
                             activity!!,
@@ -258,16 +310,17 @@ class HomeFragment : BaseFragmnet() {
         isFristTimeSelect: Boolean
     ) {
         if (!isFirstTime) {
-            showLoadingProgress(activity!!)
+            showLoadingProgress(requireActivity())
         }
         if (isSelect) {
-            showLoadingProgress(activity!!)
+            showLoadingProgress(requireActivity())
             foodList!!.clear()
         }
         val map = HashMap<String, String>()
         map["cat_id"] = id!!
-        if (SharePreference.getBooleanPref(activity!!, SharePreference.isLogin)) {
-            map["user_id"] = SharePreference.getStringPref(activity!!, SharePreference.userId)!!
+        if (SharePreference.getBooleanPref(requireActivity(), SharePreference.isLogin)) {
+            map["user_id"] =
+                SharePreference.getStringPref(requireActivity(), SharePreference.userId)!!
         }
         val call = ApiClient.getClient.getFoodItem(map, CurrentPageNo.toString())
         call.enqueue(object : Callback<RestResponse<FoodItemResponseModel>> {
@@ -282,23 +335,19 @@ class HomeFragment : BaseFragmnet() {
                             dismissLoadingProgress()
                         }
                         val foodItemResponseModel: FoodItemResponseModel = restResponce.getData()!!
-                        CurrentPageNo = foodItemResponseModel.getCurrent_page()!!.toInt()
-                        TOTAL_PAGES = foodItemResponseModel.getLast_page()!!.toInt()
-                        for (i in 0 until foodItemResponseModel.getData()!!.size) {
+                        CurrentPageNo = foodItemResponseModel.currentPage!!.toInt()
+                        TOTAL_PAGES = foodItemResponseModel.lastPage!!.toInt()
+                        for (i in 0 until foodItemResponseModel.data!!.size) {
                             val foodItemModel = FoodItemModel()
-                            foodItemModel.setId(foodItemResponseModel.getData()!!.get(i).getId())
-                            foodItemModel.setItem_name(
-                                foodItemResponseModel.getData()!!.get(i).getItem_name()
-                            )
-                            foodItemModel.setItem_price(
-                                foodItemResponseModel.getData()!!.get(i).getItem_price()
-                            )
-                            foodItemModel.setItemimage(
-                                foodItemResponseModel.getData()!!.get(i).getItemimage()
-                            )
-                            foodItemModel.setIs_favorite(
-                                foodItemResponseModel.getData()!!.get(i).getIs_favorite()
-                            )
+                            foodItemModel.id = foodItemResponseModel.data!!.get(i).id
+                            foodItemModel.itemName = foodItemResponseModel.data!![i].itemName
+
+                            foodItemModel.variation = foodItemResponseModel.data!![i].variation
+
+                            foodItemModel.itemimage = foodItemResponseModel.data!![i].itemimage
+
+                            foodItemModel.isFavorite = foodItemResponseModel.data!![i].isFavorite
+
                             foodList!!.add(foodItemModel)
                         }
 
@@ -332,6 +381,7 @@ class HomeFragment : BaseFragmnet() {
                             mapKey,
                             restResponce.getMap().toString()
                         )
+
                         setFoodAdaptor(isFirstTime, isFristTimeSelect)
                         if (isFristTimeSelect) {
                             if (SharePreference.getBooleanPref(
@@ -340,7 +390,7 @@ class HomeFragment : BaseFragmnet() {
                                 )
                             ) {
                                 if (isCheckNetwork(activity!!)) {
-                                    callApiCartCount(true, false)
+                                    callApiCartCount(isFristTime = true, isOnResume = false)
                                 } else {
                                     alertErrorOrValidationDialog(
                                         activity!!,
@@ -349,7 +399,7 @@ class HomeFragment : BaseFragmnet() {
                                 }
                             } else {
                                 dismissLoadingProgress()
-                                rlCount!!.visibility = View.GONE
+                                rlCount!!?.visibility = View.GONE
                             }
                         }
                     } else if (restResponce.getMessage().equals("0")) {
@@ -362,19 +412,19 @@ class HomeFragment : BaseFragmnet() {
                         }
 
                     }
-                } else{
-                        val error= JSONObject(response.errorBody()!!.string())
-                        if(error.getString("status").equals("2")){
-                            dismissLoadingProgress()
-                            Common.setLogout(activity!!)
-                        }else{
-                            dismissLoadingProgress()
-                            alertErrorOrValidationDialog(
-                                activity!!,
-                                error.getString("message")
-                            )
-                        }
+                } else {
+                    val error = JSONObject(response.errorBody()!!.string())
+                    if (error.getString("status").equals("2")) {
+                        dismissLoadingProgress()
+                        Common.setLogout(activity!!)
+                    } else {
+                        dismissLoadingProgress()
+                        alertErrorOrValidationDialog(
+                            activity!!,
+                            error.getString("message")
+                        )
                     }
+                }
 
             }
 
@@ -388,9 +438,10 @@ class HomeFragment : BaseFragmnet() {
         })
     }
 
-    fun setFoodCategoryAdaptor() {
+    private fun setFoodCategoryAdaptor() {
         foodCategoryAdapter =
             object : BaseAdaptor<FoodCategoryModel>(activity!!, foodCategoryList!!) {
+                @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
                 @SuppressLint("ResourceType")
                 override fun onBindData(
                     holder: RecyclerView.ViewHolder?,
@@ -405,25 +456,39 @@ class HomeFragment : BaseFragmnet() {
                     val ViewFrist: View = holder.itemView.findViewById(R.id.ViewFrist)
                     val ViewLast: View = holder.itemView.findViewById(R.id.ViewLast)
 
-                    if(position==0){
-                        ViewFrist.visibility=View.VISIBLE
-                        ViewLast.visibility=View.GONE
-                    }else if(position==(foodCategoryList!!.size-1)){
-                        ViewFrist.visibility=View.GONE
-                        ViewLast.visibility=View.VISIBLE
-                    }else{
-                        ViewFrist.visibility=View.GONE
-                        ViewLast.visibility=View.GONE
+                    when (position) {
+                        0 -> {
+                            ViewFrist.visibility = View.VISIBLE
+                            ViewLast.visibility = View.GONE
+                        }
+                        (foodCategoryList!!.size - 1) -> {
+                            ViewFrist.visibility = View.GONE
+                            ViewLast.visibility = View.VISIBLE
+                        }
+                        else -> {
+                            ViewFrist.visibility = View.GONE
+                            ViewLast.visibility = View.GONE
+                        }
                     }
 
                     if (foodCategoryList!!.get(position).isSelect()!!) {
-                        llBarger.background = ResourcesCompat.getDrawable(resources,R.drawable.bg_strock_orange5,null)
+                        llBarger.background = ResourcesCompat.getDrawable(
+                            resources,
+                            R.drawable.bg_strock_orange5,
+                            null
+                        )
                     } else {
                         llBarger.background = null
                     }
                     tvFoodCategoryName.text = foodCategoryList!!.get(position).getCategory_name()
                     Glide.with(activity!!).load(foodCategoryList!!.get(position).getImage())
-                        .placeholder(ResourcesCompat.getDrawable(resources,R.drawable.placeholder,null))
+                        .placeholder(
+                            ResourcesCompat.getDrawable(
+                                resources,
+                                R.drawable.ic_placeholder,
+                                null
+                            )
+                        )
                         .into(ivFoodCategory)
                     holder.itemView.setOnClickListener {
                         for (i in 0 until foodCategoryList!!.size) {
@@ -437,11 +502,25 @@ class HomeFragment : BaseFragmnet() {
                         CurrentPageNo = 1
                         TOTAL_PAGES = 0
                         if (SharePreference.getBooleanPref(activity!!, isLinearLayoutManager)) {
-                            manager1=GridLayoutManager(activity, 1, GridLayoutManager.VERTICAL, false)
-                            ic_grid.setImageDrawable(ResourcesCompat.getDrawable(resources,R.drawable.ic_listitem,null))
+                            manager1 =
+                                GridLayoutManager(activity, 1, GridLayoutManager.VERTICAL, false)
+                            ic_grid.setImageDrawable(
+                                ResourcesCompat.getDrawable(
+                                    resources,
+                                    R.drawable.ic_listitem,
+                                    null
+                                )
+                            )
                         } else {
-                            manager1=GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false)
-                            ic_grid.setImageDrawable(ResourcesCompat.getDrawable(resources,R.drawable.ic_grid,null))
+                            manager1 =
+                                GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false)
+                            ic_grid.setImageDrawable(
+                                ResourcesCompat.getDrawable(
+                                    resources,
+                                    R.drawable.ic_grid,
+                                    null
+                                )
+                            )
                         }
                         rvFoodSubcategory.layoutManager = manager1
                         if (isCheckNetwork(activity!!)) {
@@ -461,11 +540,11 @@ class HomeFragment : BaseFragmnet() {
 
             }
         if (isAdded) {
-            rvFoodCategory.adapter = foodCategoryAdapter
-            rvFoodCategory.layoutManager =
-                LinearLayoutManager(activity!!, LinearLayoutManager.HORIZONTAL, false)
-            rvFoodCategory.itemAnimator = DefaultItemAnimator()
-            rvFoodCategory.isNestedScrollingEnabled = true
+            rvFoodCategory?.adapter = foodCategoryAdapter
+            rvFoodCategory?.layoutManager =
+                LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+            rvFoodCategory?.itemAnimator = DefaultItemAnimator()
+            rvFoodCategory?.isNestedScrollingEnabled = true
         }
     }
 
@@ -474,10 +553,10 @@ class HomeFragment : BaseFragmnet() {
             if (fristTimeSelect) {
                 setFoodCategoryAdaptor()
                 if (bannerList != null) {
-                    rlBenner!!.visibility = View.VISIBLE
+                    rlBenner?.visibility = View.VISIBLE
                     loadPagerImages(bannerList!!)
                 } else {
-                    rlBenner!!.visibility = View.GONE
+                    rlBenner?.visibility = View.GONE
                 }
             }
             foodAdapter = object : BaseAdaptor<FoodItemModel>(activity!!, foodList!!) {
@@ -492,19 +571,36 @@ class HomeFragment : BaseFragmnet() {
                         holder.itemView.findViewById(R.id.tvFoodPriceGrid)
                     val ivFood: ImageView = holder.itemView.findViewById(R.id.ivFood)
                     val icLike: ImageView = holder.itemView.findViewById(R.id.icLike)
-                    tvFoodName.text = foodList!!.get(position).getItem_name()
+                    val tvFoodOnSale: TextView = holder.itemView.findViewById(R.id.tvFoodOnSale)
 
-                    Common.getPrice(foodList!!.get(position).getItem_price()!!.toDouble(),tvFoodPriceGrid,activity!!)
+                    tvFoodName.text = foodList!![position].itemName
+                    Common.getPrice(
+                        foodList!![position].variation?.get(0)?.productPrice!!.toDouble(),
+                        tvFoodPriceGrid,
+                        activity!!
+                    )
                     if (SharePreference.getBooleanPref(activity!!, isLinearLayoutManager)) {
                         Glide.with(activity!!)
-                            .load(foodList!!.get(position).getItemimage()!!.getImage()).centerCrop()
-                            .placeholder(ResourcesCompat.getDrawable(resources,R.drawable.placeholder,null))
+                            .load(foodList!![position].itemimage?.image).centerCrop()
+                            .placeholder(
+                                ResourcesCompat.getDrawable(
+                                    resources,
+                                    R.drawable.ic_placeholder,
+                                    null
+                                )
+                            )
                             .into(ivFood)
                     } else {
                         Glide.with(activity!!)
-                            .load(foodList!!.get(position).getItemimage()!!.getImage()).centerCrop()
+                            .load(foodList!![position].itemimage!!.image).centerCrop()
                             .optionalFitCenter()
-                            .placeholder(ResourcesCompat.getDrawable(resources,R.drawable.placeholder,null))
+                            .placeholder(
+                                ResourcesCompat.getDrawable(
+                                    resources,
+                                    R.drawable.ic_placeholder,
+                                    null
+                                )
+                            )
                             .into(ivFood)
                     }
 
@@ -513,27 +609,50 @@ class HomeFragment : BaseFragmnet() {
                             Intent(
                                 activity!!,
                                 FoodDetailActivity::class.java
-                            ).putExtra("foodItemId", foodList!!.get(position).getId())
+                            ).putExtra("foodItemId", foodList!![position].id)
                         )
+                    }
+
+
+                    if (foodList!![position].variation?.get(0)?.salePrice != 0) {
+                        tvFoodOnSale.visibility = View.VISIBLE
+                    } else {
+                        tvFoodOnSale.visibility = View.GONE
+
                     }
 
                     tvFoodPriceGrid.visibility = View.VISIBLE
 
-                    if (foodList!!.get(position).getIs_favorite().equals("0")) {
-                        icLike.setImageDrawable(ResourcesCompat.getDrawable(resources,R.drawable.ic_unlike,null))
+                    if (foodList!!.get(position).isFavorite.equals("0")) {
+                        icLike.setImageDrawable(
+                            ResourcesCompat.getDrawable(
+                                resources,
+                                R.drawable.ic_unlike,
+                                null
+                            )
+                        )
                         icLike.imageTintList = ColorStateList.valueOf(Color.WHITE)
                     } else {
-                        icLike.setImageDrawable(ResourcesCompat.getDrawable(resources,R.drawable.ic_favourite_like,null))
+                        icLike.setImageDrawable(
+                            ResourcesCompat.getDrawable(
+                                resources,
+                                R.drawable.ic_favourite_like,
+                                null
+                            )
+                        )
                         icLike.imageTintList = ColorStateList.valueOf(Color.WHITE)
                     }
 
 
                     icLike.setOnClickListener {
                         if (SharePreference.getBooleanPref(activity!!, SharePreference.isLogin)) {
-                            if (foodList!!.get(position).getIs_favorite().equals("0")) {
+                            if (foodList!!.get(position).isFavorite.equals("0")) {
                                 val map = HashMap<String, String>()
-                                map["item_id"] = foodList!!.get(position).getId()!!
-                                map["user_id"] = SharePreference.getStringPref(activity!!, SharePreference.userId)!!
+                                map["item_id"] = foodList!!.get(position).id!!
+                                map["user_id"] = SharePreference.getStringPref(
+                                    activity!!,
+                                    SharePreference.userId
+                                )!!
                                 if (isCheckNetwork(activity!!)) {
                                     callApiFavourite(map, position)
                                 } else {
@@ -557,8 +676,8 @@ class HomeFragment : BaseFragmnet() {
 
             }
             if (isAdded) {
-                rvFoodSubcategory.adapter = foodAdapter
-                rvFoodSubcategory.itemAnimator = DefaultItemAnimator()
+                rvFoodSubcategory?.adapter = foodAdapter
+                rvFoodSubcategory?.itemAnimator = DefaultItemAnimator()
             }
         } else {
             foodAdapter!!.notifyDataSetChanged()
@@ -577,7 +696,7 @@ class HomeFragment : BaseFragmnet() {
                     val restResponse: SingleResponse = response.body()!!
                     if (restResponse.getStatus().equals("1")) {
                         dismissLoadingProgress()
-                        foodList!!.get(pos).setIs_favorite("1")
+                        foodList!!.get(pos).isFavorite = "1"
                         foodAdapter!!.notifyDataSetChanged()
                     } else if (restResponse.getStatus().equals("0")) {
                         dismissLoadingProgress()
@@ -615,9 +734,9 @@ class HomeFragment : BaseFragmnet() {
                 if (response.code() == 200) {
                     dismissLoadingProgress()
                     val restResponce: CartCountModel = response.body()!!
-                    if(restResponce.getStatus().equals("0")){
+                    if (restResponce.getStatus().equals("0")) {
                         tvCount!!.text = "0"
-                    }else{
+                    } else {
                         tvCount!!.text = restResponce.getCart()
                     }
                 } else {
@@ -648,24 +767,41 @@ class HomeFragment : BaseFragmnet() {
                 `val`: BannerModel,
                 position: Int
             ) {
-                 val ivFood: ImageView = holder!!.itemView.findViewById(R.id.ivBannereSlider)
-                 Glide.with(activity!!).load(imageHase.get(position).getImage()).placeholder(ResourcesCompat.getDrawable(resources,R.drawable.placeholder,null)).into(ivFood)
 
-                 val view1: View = holder.itemView.findViewById(R.id.view1)
-                 if (position == 0) {
-                     view1.visibility=View.VISIBLE
-                 } else {
-                     view1.visibility=View.GONE
-                 }
+                val ivFood: ImageView = holder!!.itemView.findViewById(R.id.ivBannereSlider)
+                Glide.with(activity!!).load(imageHase.get(position).getImage()).placeholder(
+                    ResourcesCompat.getDrawable(
+                        resources,
+                        R.drawable.ic_placeholder,
+                        null
+                    )
+                ).into(ivFood)
 
-                 holder.itemView.setOnClickListener {
-                     startActivity(
-                             Intent(
-                                     activity!!,
-                                     FoodDetailActivity::class.java
-                             ).putExtra("foodItemId", imageHase[position].getItem_id())
-                     )
-                 }
+                /*   val view1: View = holder.itemView.findViewById(R.id.view1)
+                   if (position == 0) {
+                       view1.visibility = View.VISIBLE
+                   } else {
+                       view1.visibility = View.GONE
+                   }
+   */
+                holder.itemView.setOnClickListener {
+                    if (`val`.getType().toString() == "item") {
+                        startActivity(
+                            Intent(
+                                activity!!,
+                                FoodDetailActivity::class.java
+                            ).putExtra("foodItemId", `val`.getItemId().toString())
+                                .putExtra("isItemActivity", resources.getString(R.string.home))
+                        )
+                    } else if (`val`.getType().toString() == "category") {
+                        startActivity(
+                            Intent(activity!!, CategoryByFoodActivity::class.java).putExtra(
+                                "CategoryId",
+                                `val`.getCatId().toString()
+                            ).putExtra("CategoryName", `val`.getCategoryName().toString())
+                        )
+                    }
+                }
             }
 
             override fun setItemLayout(): Int {
@@ -673,18 +809,59 @@ class HomeFragment : BaseFragmnet() {
             }
 
         }
-        rvBanner.layoutManager=LinearLayoutManager(activity!!,LinearLayoutManager.HORIZONTAL,false)
-        rvBanner.adapter=bannerAdapter
+        rvBanner?.layoutManager =
+            LinearLayoutManager(activity!!, LinearLayoutManager.HORIZONTAL, false)
+        rvBanner?.adapter = bannerAdapter
+        val snapHelper = PagerSnapHelper()
+        snapHelper.attachToRecyclerView(null)
+        rvBanner?.onFlingListener = null
+        rvBanner?.let { snapHelper.attachToRecyclerView(it) }
+        timer = Timer()
+        rvBanner?.let { timer?.schedule(AutoScrollTask(pos, it, imageHase), 0, 5000L) }
+    }
+
+
+
+
+    private class AutoScrollTask(
+        private var position: Int,
+        private var rvBanner: RecyclerView,
+        private var arrayList: ArrayList<BannerModel>
+    ) : TimerTask() {
+        override fun run() {
+            if (arrayList.size > position) {
+
+                if (position == arrayList.size - 1) {
+                    position = 0
+                } else {
+                    position++
+                }
+
+            }
+            rvBanner.smoothScrollToPosition(position)
+        }
     }
 
     override fun onPause() {
         super.onPause()
-        if (timer != null)
+        if(timer!=null)
+        {
             timer!!.cancel()
+        }
     }
 
     override fun onResume() {
         super.onResume()
+        if(timer!=null)
+        {
+            if(bannerDatalist!=null)
+            {
+                timer=Timer()
+                rvBanner?.let { timer?.schedule(AutoScrollTask(pos, it, bannerDatalist), 0, 5000L) }
+            }
+
+
+        }
         Common.getCurrentLanguage(activity!!, false)
         if (SharePreference.getBooleanPref(activity!!, SharePreference.isLogin)) {
             if (Common.isCartTrueOut) {

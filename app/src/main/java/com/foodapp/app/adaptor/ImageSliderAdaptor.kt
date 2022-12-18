@@ -15,7 +15,7 @@ import java.util.*
 
 class ImageSliderAdaptor(var context: Activity, private val arrayList: ArrayList<*>) : PagerAdapter() {
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
-        return view==`object`
+        return view == `object`
     }
 
     override fun getCount(): Int {
@@ -27,12 +27,12 @@ class ImageSliderAdaptor(var context: Activity, private val arrayList: ArrayList
         val itemView = inflater.inflate(R.layout.row_viewpager_item, view, false) as ViewGroup
         val mImageView = itemView.findViewById<View>(R.id.img_pager) as ImageView
         Glide.with(context)
-            .load(arrayList[position])
-            .placeholder(R.drawable.placeholder)
-            .centerCrop()
-            .into(mImageView)
+                .load(arrayList[position])
+                .placeholder(R.drawable.ic_placeholder)
+                .centerCrop()
+                .into(mImageView)
         mImageView.setOnClickListener {
-            context.startActivity(Intent(context,ImageSliderActivity::class.java).putExtra("imageList",arrayList))
+            context.startActivity(Intent(context, ImageSliderActivity::class.java).putExtra("imageList", arrayList))
         }
         (view as ViewPager).addView(itemView)
         return itemView

@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_8sdp"
                     android:layout_gravity="center"
-                    tools:text="ORDER NUMBER : "
+                    tools:text="-"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_10ssp"
                     tools:ignore="MissingPrefix" />
@@ -42,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_alignParentEnd="true"
-                    tools:text="16 jan 2020"
+                    tools:text="-"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_10ssp"
                     tools:ignore="MissingPrefix" />
@@ -74,7 +74,7 @@
                 android:layout_marginTop="@dimen/_5sdp"
                 android:textAlignment="viewStart"
                 android:gravity="start"
-                tools:text="DELIVERY ADDRESS: "
+                tools:text="-"
                 android:layout_below="@id/rlRatting"
                 android:textColor="@color/gray"
                 android:textSize="@dimen/_10ssp"

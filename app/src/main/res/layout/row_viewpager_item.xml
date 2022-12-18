@@ -9,5 +9,5 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:scaleType="centerCrop"
-        android:src="@drawable/placeholder" />
+        android:src="@drawable/ic_placeholder" />
 </LinearLayout>

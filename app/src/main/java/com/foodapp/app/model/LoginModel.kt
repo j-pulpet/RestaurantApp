@@ -1,7 +1,8 @@
 package com.foodapp.app.model
 
+import com.google.gson.annotations.SerializedName
+
 class LoginModel {
-    private var name: String? = null
 
     private var mobile: String? = null
 
@@ -9,22 +10,21 @@ class LoginModel {
 
     private var email: String? = null
 
-    fun getName(): String? {
-        return name
-    }
+    private var name: String? = null
 
-    fun setName(name: String?) {
-        this.name = name
-    }
+    private var profile_image: String? = null
+
+    private var referral_code: String? = null
+
+    private var login_type: String? = null
 
     fun getMobile(): String? {
         return mobile
     }
 
-    fun setMobile(mobile: String?) {
-        this.mobile = mobile
+    fun getLoginType():String?{
+        return login_type
     }
-
     fun getId(): String? {
         return id
     }
@@ -37,7 +37,15 @@ class LoginModel {
         return email
     }
 
-    fun setEmail(email: String?) {
-        this.email = email
+    fun getName(): String? {
+        return name
+    }
+
+    fun getProfile(): String? {
+        return profile_image
+    }
+
+    fun getReferralCode(): String? {
+        return referral_code
     }
 }

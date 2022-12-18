@@ -11,8 +11,8 @@
         app:cardElevation="1dp"
         android:layout_marginTop="@dimen/_3sdp"
         android:layout_marginBottom="@dimen/_10sdp"
-        android:layout_marginRight="@dimen/_8sdp"
-        android:layout_marginLeft="@dimen/_8sdp">
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginStart="@dimen/_8sdp">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -34,7 +34,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    tools:text="Salad"
+                    tools:text="-"
                     android:gravity="start"
                     android:textAlignment="viewStart"
                     android:layout_marginStart="@dimen/_5sdp"
@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_below="@id/tvAddonsName"
-                    tools:text="Salad"
+                    tools:text="-"
                     android:gravity="start"
                     android:textAlignment="viewStart"
                     android:layout_marginStart="@dimen/_5sdp"

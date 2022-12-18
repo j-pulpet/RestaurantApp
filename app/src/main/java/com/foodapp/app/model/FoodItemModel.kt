@@ -1,54 +1,96 @@
 package com.foodapp.app.model
 
-class FoodItemModel {
-    private var itemimage: FoodItemImageModel? = null
+import com.google.gson.annotations.SerializedName
 
-    private var item_price: String? = null
 
-    private var item_name: String? = null
+data class FoodItemResponseModel(
 
-    private var id: String? = null
+	@field:SerializedName("first_page_url")
+	val firstPageUrl: String? = null,
 
-    private var is_favorite: String? = null
+	@field:SerializedName("path")
+	val path: String? = null,
 
-    fun getItemimage(): FoodItemImageModel? {
-        return itemimage
-    }
+	@field:SerializedName("per_page")
+	val perPage: Int? = null,
 
-    fun setItemimage(itemimage: FoodItemImageModel?) {
-        this.itemimage = itemimage
-    }
+	@field:SerializedName("total")
+	val total: Int? = null,
 
-    fun getItem_price(): String? {
-        return item_price
-    }
+	@field:SerializedName("data")
+	val data: List<FoodItemModel>? = null,
 
-    fun setItem_price(item_price: String?) {
-        this.item_price = item_price
-    }
+	@field:SerializedName("last_page")
+	val lastPage: Int? = null,
 
-    fun getItem_name(): String? {
-        return item_name
-    }
+	@field:SerializedName("last_page_url")
+	val lastPageUrl: String? = null,
 
-    fun setItem_name(item_name: String?) {
-        this.item_name = item_name
-    }
+	@field:SerializedName("next_page_url")
+	val nextPageUrl: Any? = null,
 
-    fun getId(): String? {
-        return id
-    }
+	@field:SerializedName("from")
+	val from: Int? = null,
 
-    fun setId(id: String?) {
-        this.id = id
-    }
+	@field:SerializedName("to")
+	val to: Int? = null,
 
-    fun getIs_favorite(): String? {
-        return is_favorite
-    }
+	@field:SerializedName("prev_page_url")
+	val prevPageUrl: Any? = null,
 
-    fun setIs_favorite(is_favorite: String?) {
-        this.is_favorite = is_favorite
-    }
+	@field:SerializedName("current_page")
+	val currentPage: Int? = null
+)
 
-}
+data class FoodItemModel(
+
+	@field:SerializedName("itemimage")
+	var itemimage: Itemimage? = null,
+
+	@field:SerializedName("is_favorite")
+	var isFavorite: String? = null,
+
+	@field:SerializedName("item_name")
+	var itemName: String? = null,
+
+	@field:SerializedName("id")
+	var id: String? = null,
+
+	@field:SerializedName("variation")
+	var variation: List<VariationItem>? = null
+)
+
+data class Itemimage(
+
+	@field:SerializedName("image_name")
+	val imageName: String? = null,
+
+	@field:SerializedName("image")
+	val image: String? = null,
+
+	@field:SerializedName("item_id")
+	val itemId: String? = null,
+
+	@field:SerializedName("id")
+	val id: Int? = null
+)
+
+data class VariationItem(
+
+	@field:SerializedName("item_id")
+	val itemId: String? = null,
+
+	@field:SerializedName("id")
+	val id: Int? = null,
+
+	@field:SerializedName("product_price")
+	var productPrice: String? = null,
+
+	@field:SerializedName("sale_price")
+	val salePrice: Int? = null,
+
+	@field:SerializedName("variation")
+	val variation: String? = null,
+
+	var isSelect:Boolean?=false
+)

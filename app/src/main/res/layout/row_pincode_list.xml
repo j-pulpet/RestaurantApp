@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvPinCode"
+        fontPath="@string/font_medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:paddingLeft="@dimen/_15sdp"
+        android:paddingTop="@dimen/_8sdp"
+        android:paddingRight="@dimen/_15sdp"
+        android:paddingBottom="@dimen/_8sdp"
+        android:textSize="@dimen/_12ssp"
+        android:textAlignment="viewStart"
+        tools:ignore="MissingPrefix" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/_13sdp"
+        android:layout_marginEnd="@dimen/_13sdp"
+        android:background="@color/gray"/>
+
+</LinearLayout>

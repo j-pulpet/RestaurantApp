@@ -33,7 +33,7 @@
             android:layout_marginBottom="@dimen/_10sdp"
             android:text="@string/sign_up"
             android:layout_below="@id/ivLogin"
-            android:textColor="@color/light_orange"
+            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/_15ssp"
             tools:ignore="MissingPrefix" />
 
@@ -73,14 +73,43 @@
             android:textSize="@dimen/_10ssp"
             fontPath="@string/font_medium"
             tools:ignore="MissingPrefix"/>
+<LinearLayout
+    android:id="@+id/linearMobile"
+    android:layout_width="match_parent"
+    android:layout_below="@id/edEmail"
+
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/edCountryCode"
+        fontPath="@string/font_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:background="@drawable/bg_white_10"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:hint="+91"
+        android:imeOptions="actionNext"
+        android:inputType="phone"
+        android:maxLines="10"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:drawablePadding="@dimen/_8sdp"
+        android:drawableEnd="@drawable/ic_drop_down"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingEnd="@dimen/_8sdp"
+        android:textDirection="locale"
+        android:singleLine="true"
+        android:textSize="@dimen/_10ssp"
+        tools:ignore="MissingPrefix" />
 
         <EditText
             android:id="@+id/edMobile"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_35sdp"
-            android:layout_below="@id/edEmail"
             android:layout_marginTop="@dimen/_8sdp"
-            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginHorizontal="@dimen/_2sdp"
             android:background="@drawable/bg_white_10"
             android:hint="@string/mobileno"
             android:textAlignment="viewStart"
@@ -92,12 +121,13 @@
             android:textSize="@dimen/_10ssp"
             fontPath="@string/font_medium"
             tools:ignore="MissingPrefix"/>
+</LinearLayout>
 
         <EditText
             android:id="@+id/edRefralcode"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_35sdp"
-            android:layout_below="@id/edMobile"
+            android:layout_below="@id/linearMobile"
             android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginHorizontal="@dimen/_10sdp"
             android:background="@drawable/bg_white_10"
@@ -107,8 +137,7 @@
             android:textAlignment="viewStart"
             fontPath="@string/font_medium"
             tools:ignore="MissingPrefix"
-            android:inputType="phone"
-            android:maxLength="10"
+            android:inputType="text"
             android:paddingLeft="@dimen/_10sdp"
             android:paddingRight="@dimen/_10sdp"
             android:textSize="@dimen/_10ssp" />
@@ -179,16 +208,16 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/llCheck"
             android:layout_alignParentEnd="true"
-            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_10sdp"
             android:background="@drawable/bg_editfield"
-            android:backgroundTint="@color/light_orange"
+            android:backgroundTint="@color/colorPrimary"
             android:gravity="center_horizontal"
             android:onClick="onClick"
             android:padding="@dimen/_10sdp"
-            android:text="@string/sign_up_btn"
+            android:text="@string/signup"
             android:textColor="@color/white"
             android:textSize="@dimen/_12ssp"
             tools:ignore="MissingPrefix" />
@@ -200,15 +229,15 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginBottom="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
             android:text="@string/skip_amp_continue"
             android:layout_below="@id/tvSignup"
             android:onClick="onClick"
             android:id="@+id/tvSkip"
             android:gravity="center"
             android:visibility="visible"
-            android:textColor="@color/light_orange"
+            android:textColor="@color/colorPrimary"
 
             android:layout_alignParentEnd="true"
             android:padding="@dimen/_10sdp"
@@ -243,7 +272,7 @@
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:onClick="onClick"
                 android:text="@string/login"
-                android:textColor="@color/light_orange"
+                android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/_11ssp"
                 tools:ignore="MissingPrefix" />
         </LinearLayout>
